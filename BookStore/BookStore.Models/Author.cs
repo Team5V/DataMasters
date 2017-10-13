@@ -13,12 +13,13 @@ namespace BookStore.Models
         [Key]
         public int Id { get; set; }
 
-        [MinLength(2)]
-        [MaxLength(20)]
         [Required]
+        [StringLength(20, MinimumLength = 5,
+            ErrorMessage = "Author.FullName's length cannot be less than 5 or more than 20 symbols long.")]
         public string FullName { get; set; }
 
-        [MaxLength(200)]
+        [StringLength(200,
+            ErrorMessage = "Author.Bio's length cannot be more than 200 symbols long.")]
         public string Bio { get; set; }
 
         public virtual ICollection<Book> Books { get; set; }

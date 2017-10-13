@@ -1,19 +1,20 @@
-﻿using BookStore.Commands.Contracts;
+﻿using BookStore.Client.Commands;
 using BookStore.Core.Contracts;
+using BookStore.Data;
 using System.Collections.Generic;
 
 namespace BookStore.Commands
 {
-    public class ReadBookCommand : ICommand
+    public class ReadBookCommand : BaseCommand
     {
-        public ReadBookCommand(IBookStoreFactory factory)
+        public ReadBookCommand(IStoreContext context, IBookStoreFactory factory) : base(context, factory)
         {
 
         }
 
-        public string Execute(IList<string> parameters)
+        public override string Execute(IList<string> parameters)
         {
-            return null;
+            throw new System.NotImplementedException();
         }
     }
 }

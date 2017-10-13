@@ -15,15 +15,14 @@ namespace BookStore.Models
         [Key]
         public int Id { get; set; }
 
-        [MinLength(2)]
-        [MaxLength(200)]
         [Required]
+        [StringLength(50, MinimumLength = 2,
+            ErrorMessage = "The Title's length cannot be less than 2 or more than 50 symbols long.")]
         public string Title { get; set; }
 
         //BG, EN toUpper
-        [MinLength(2)]
-        [MaxLength(2)]
         [Required]
+        [StringLength(2, MinimumLength = 2, ErrorMessage = "The Language's length is exact 2 symbols.")]
         public string Language { get; set; }
 
         [Required]

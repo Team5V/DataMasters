@@ -1,11 +1,16 @@
-﻿using System.Collections.Generic;
-using BookStore.Commands.Contracts;
+﻿using BookStore.Core.Contracts;
+using BookStore.Data;
+using System.Collections.Generic;
 
 namespace BookStore.Client.Commands
 {
-    public class OfferCreateCommand : ICommand
+    public class OfferCreateCommand : BaseCommand
     {
-        public string Execute(IList<string> parameters)
+        public OfferCreateCommand(IStoreContext context, IBookStoreFactory factory) : base(context, factory)
+        {
+        }
+
+        public override string Execute(IList<string> parameters)
         {
             throw new System.NotImplementedException();
         }

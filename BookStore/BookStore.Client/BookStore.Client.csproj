@@ -53,6 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\BaseCommand.cs" />
     <Compile Include="Commands\Contracts\ICommand.cs" />
     <Compile Include="Commands\BookCreateCommand.cs" />
     <Compile Include="Commands\OfferCreateCommand.cs" />
