@@ -11,6 +11,7 @@
     <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -53,11 +54,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\Contracts\ICommand.cs" />
-    <Compile Include="Commands\CreateBookCommand.cs" />
-    <Compile Include="Commands\DeleteBookCommand.cs" />
-    <Compile Include="Commands\ReadBookCommand.cs" />
-    <Compile Include="Commands\UpdateBookCommand.cs" />
+    <Compile Include="Commands\BookCreateCommand.cs" />
+    <Compile Include="Commands\OfferCreateCommand.cs" />
+    <Compile Include="Commands\ReportGenerateCommand.cs" />
+    <Compile Include="Commands\SaleConductCommand.cs" />
+    <Compile Include="Commands\OfferDeleteCommand.cs" />
+    <Compile Include="Commands\BookReadCommand.cs" />
+    <Compile Include="Commands\BookUpdateCommand.cs" />
+    <Compile Include="Commands\OfferUpdateCommand.cs" />
     <Compile Include="Container\BookStoreModule.cs" />
+    <Compile Include="Core\Providers\JsonReader.cs" />
+    <Compile Include="Core\Providers\PdfWriter.cs" />
+    <Compile Include="Core\Providers\XmlReader.cs" />
     <Compile Include="Core\Contracts\ICommandParser.cs" />
     <Compile Include="Core\Contracts\ICommandProcessor.cs" />
     <Compile Include="Core\Contracts\IEngine.cs" />
@@ -76,7 +84,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

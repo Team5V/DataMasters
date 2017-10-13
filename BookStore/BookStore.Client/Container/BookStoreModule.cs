@@ -33,7 +33,7 @@ namespace BookStore.DependencyInjection
             Bind<IBookStoreFactory>().To<BookStoreFactory>().InSingletonScope();
 
             Bind<ICommand>().To<CreateBookCommand>().InSingletonScope().Named("createbook");
-            Bind<ICommand>().To<DeleteBookCommand>().InSingletonScope().Named("readbook");
+            //Bind<ICommand>().To<DeleteBookCommand>().InSingletonScope().Named("readbook");
             Bind<ICommand>().To<UpdateBookCommand>().InSingletonScope().Named("updatebook");
             Bind<ICommand>().To<ReadBookCommand>().InSingletonScope().Named("deletebook");
         }

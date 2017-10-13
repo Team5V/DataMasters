@@ -1,5 +1,5 @@
-﻿using System.Data.Entity;
-using BookStore.Models;
+﻿using BookStore.Models;
+using System.Data.Entity;
 
 namespace BookStore.Data
 {
@@ -13,10 +13,14 @@ namespace BookStore.Data
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            //PUT OUR RELATIONS HERE
+            //modelBuilder.Entity<Book>().HasMany(x => x.Authors).WithMany(x => x.Books);
+
             base.OnModelCreating(modelBuilder);
         }
 
-        public DbSet<Book> Books { get; set; }
+        public IDbSet<Book> Books { get; set; }
+        public IDbSet<Author> Authors { get; set; }
+
+        //Binded in container
     }
 }
