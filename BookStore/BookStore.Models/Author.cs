@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace BookStore.Models
 {
-    public class Author : System.IComparable<Author>
+    public class Author : IEquatable<Author>
     {
         public Author()
         {
@@ -24,9 +25,10 @@ namespace BookStore.Models
 
         public virtual ICollection<Book> Books { get; set; }
 
-        public int CompareTo(Author other)
+
+        public bool Equals(Author other)
         {
-            return this.FullName.CompareTo(other.FullName);
+            return this.FullName == other.FullName;
         }
     }
 }

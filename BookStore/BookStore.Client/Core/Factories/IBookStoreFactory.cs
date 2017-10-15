@@ -6,6 +6,6 @@ namespace BookStore.Core.Contracts
 {
     public interface IBookStoreFactory
     {
-        Book CreateBook(string title, string language, int pages, IList<Author> authors, GenreType genreType);
+        Book CreateBook(string title, string language, int pages, GenreType genreType);
     }
 }

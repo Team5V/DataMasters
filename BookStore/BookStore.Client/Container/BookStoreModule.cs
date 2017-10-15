@@ -41,7 +41,7 @@ namespace BookStore.DependencyInjection
             //Book commands
             this.Bind<ICommand>().To<BookCreateCommand>().Named("bookcreate");
             //Bind<ICommand>().To<DeleteBookCommand>().InSingletonScope().Named("readbook");
-            this.Bind<ICommand>().To<BookUpdate>().Named("bookupdate");
+            this.Bind<ICommand>().To<BookUpdateCommand>().Named("bookupdate");
             this.Bind<ICommand>().To<BookReadCommand>().Named("bookread");
             //Offer commands
             this.Bind<ICommand>().To<OfferCreateCommand>().Named("offercreate");

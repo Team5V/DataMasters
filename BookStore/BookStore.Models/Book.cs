@@ -9,7 +9,6 @@ namespace BookStore.Models
         public Book()
         {
             this.Authors = new SortedSet<Author>();
-
         }
 
         [Key]
