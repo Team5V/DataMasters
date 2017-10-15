@@ -43,10 +43,9 @@ namespace BookStore.Commands
                 $"What will be {bookTitle}'s new {propertyToEdit}?");
             var editedBookProperty = this.reader.ReadLine().ToLower();
 
-            //select which book to edit, based on user's input
-            var editedBook = (from uneditedBook in this.context.Books
-                              where uneditedBook.Title == bookTitle
-                              select uneditedBook).First();
+            var editedBook = this.context.Books
+                .Where(x => x.Title == bookTitle)
+                .Select(x => x).First();
 
             //need advice on refactoring this
             //how to select different properties to edit without using switch case?
@@ -78,12 +77,13 @@ namespace BookStore.Commands
                     throw new ArgumentException("Invalid property.");
             }
 
-            //TODO add validation on return so that you don't access DB when the command fails.
+            //TODO add validation on return so that you don't access DB
+            //when the command fails
             //Question: how to check if the Database has been accessed?
 
 
-            //BookStoreContext throws a stack overflow exception it overrides the SaveChanges() method.
-            //traveller project uses the above approach
+            //BookStoreContext throws a stack overflow exception 
+            //if it overrides the SaveChanges() method.
             this.context.SaveChanges();
 
             return $"Changed {bookTitle}'s {propertyToEdit} to {editedBookProperty}";
