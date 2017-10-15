@@ -1,6 +1,6 @@
 ﻿using BookStore.Client.Commands;
 using BookStore.Core.Contracts;
-using BookStore.Data;
+using BookStore.Database;
 using BookStore.Models.Enums;
 using Bytes2you.Validation;
 using System;
@@ -9,14 +9,14 @@ using System.Linq;
 
 namespace BookStore.Commands
 {
-    public class UpdateBookCommand : BaseCommand
+    public class BookUpdateCommand : BaseCommand
     {
-        private readonly IStoreContext context;
+        private readonly IBookStoreContext context;
         private readonly IBookStoreFactory factory;
         private readonly IWriter writer;
         private readonly IReader reader;
 
-        public UpdateBookCommand(IStoreContext context, IBookStoreFactory factory, IWriter writer, IReader reader)
+        public BookUpdateCommand(IBookStoreContext context, IBookStoreFactory factory, IWriter writer, IReader reader)
             : base(context, factory)
         {
             Guard.WhenArgument(context, "context").IsNull().Throw();
