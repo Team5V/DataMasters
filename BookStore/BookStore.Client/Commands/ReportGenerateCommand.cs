@@ -6,7 +6,7 @@ namespace BookStore.Client.Commands
 {
     public class ReportGenerateCommand : BaseCommand
     {
-        public ReportGenerateCommand(IBookStoreContext context, IBookStoreFactory factory) : base(context, factory)
+        public ReportGenerateCommand(IBookStoreContext context, IBookStoreFactory factory) : base(context)
         {
         }
 

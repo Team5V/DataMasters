@@ -1,6 +1,7 @@
 ﻿using BookStore.Commands;
 using BookStore.Core.Contracts;
 using BookStore.Database;
+using Bytes2you.Validation;
 using System.Collections.Generic;
 
 namespace BookStore.Client.Commands
@@ -10,10 +11,11 @@ namespace BookStore.Client.Commands
         private IBookStoreContext context;
         private readonly IBookStoreFactory factory;
 
-        public BaseCommand(IBookStoreContext context, IBookStoreFactory factory)
+        public BaseCommand(IBookStoreContext context)
         {
+            Guard.WhenArgument(context, "context").IsNull().Throw();
+
             this.context = context;
-            this.factory = factory;
         }
 
         public abstract string Execute(IList<string> parameters);

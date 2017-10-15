@@ -6,7 +6,7 @@ namespace BookStore.Client.Commands
 {
     public class OfferDeleteCommand : BaseCommand
     {
-        public OfferDeleteCommand(IBookStoreContext context, IBookStoreFactory factory) : base(context, factory)
+        public OfferDeleteCommand(IBookStoreContext context, IBookStoreFactory factory) : base(context)
         {
         }
 
