@@ -1,6 +1,6 @@
-﻿using Ninject;
+﻿using BookStore.Commands;
+using Ninject;
 using System;
-using BookStore.Commands.Contracts;
 
 namespace BookStore.Core.Factories
 {
@@ -13,7 +13,7 @@ namespace BookStore.Core.Factories
             this.kernel = kernel ?? throw new ArgumentNullException("kernel");
         }
 
-        public ICommand CreateCommand(string commandName)
+        public ICommand ResolveCommand(string commandName)
         {
             return this.kernel.Get<ICommand>(commandName);
         }

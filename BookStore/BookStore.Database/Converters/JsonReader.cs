@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace BookStore.Client.Core.Providers
+namespace BookStore.Database.Converters
 {
-    public class XmlReader
+    internal class JsonReader
     {
         public string ReadLine()
         {

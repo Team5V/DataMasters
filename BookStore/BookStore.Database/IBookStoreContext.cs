@@ -1,9 +1,9 @@
 ﻿using BookStore.Models;
 using System.Data.Entity;
 
-namespace BookStore.Data
+namespace BookStore.Database
 {
-    public interface IStoreContext
+    public interface IBookStoreContext
     {
         IDbSet<Book> Books { get; set; }
 

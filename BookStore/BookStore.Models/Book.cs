@@ -26,6 +26,7 @@ namespace BookStore.Models
         public string Language { get; set; }
 
         [Required]
+        [Range(minimum: 1, maximum: 2000)]
         public int Pages { get; set; }
 
         [Required]
@@ -34,5 +35,6 @@ namespace BookStore.Models
         [Required]
         [EnumDataType(typeof(GenreType))]
         public GenreType Genre { get; set; }
+
     }
 }

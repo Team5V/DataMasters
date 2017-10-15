@@ -1,12 +1,12 @@
 ﻿using BookStore.Core.Contracts;
-using BookStore.Data;
+using BookStore.Database;
 using System.Collections.Generic;
 
 namespace BookStore.Client.Commands
 {
     public class OfferDeleteCommand : BaseCommand
     {
-        public OfferDeleteCommand(IStoreContext context, IBookStoreFactory factory) : base(context, factory)
+        public OfferDeleteCommand(IBookStoreContext context, IBookStoreFactory factory) : base(context, factory)
         {
         }
 

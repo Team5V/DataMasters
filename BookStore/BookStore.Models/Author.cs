@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BookStore.Models
 {
-    public class Author
+    public class Author : System.IComparable<Author>
     {
         public Author()
         {
@@ -23,5 +23,10 @@ namespace BookStore.Models
         public string Bio { get; set; }
 
         public virtual ICollection<Book> Books { get; set; }
+
+        public int CompareTo(Author other)
+        {
+            return this.FullName.CompareTo(other.FullName);
+        }
     }
 }

@@ -1,5 +1,5 @@
-﻿using System;
-using BookStore.Core.Contracts;
+﻿using BookStore.Core.Contracts;
+using System;
 
 namespace BookStore.Core.Providers
 {

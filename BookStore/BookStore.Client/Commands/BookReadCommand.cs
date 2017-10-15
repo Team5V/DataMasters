@@ -1,13 +1,13 @@
 ﻿using BookStore.Client.Commands;
 using BookStore.Core.Contracts;
-using BookStore.Data;
+using BookStore.Database;
 using System.Collections.Generic;
 
 namespace BookStore.Commands
 {
-    public class ReadBookCommand : BaseCommand
+    public class BookReadCommand : BaseCommand
     {
-        public ReadBookCommand(IStoreContext context, IBookStoreFactory factory) : base(context, factory)
+        public BookReadCommand(IBookStoreContext context, IBookStoreFactory factory) : base(context, factory)
         {
 
         }

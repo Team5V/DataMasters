@@ -1,24 +1,31 @@
-﻿using BookStore.Commands.Contracts;
+﻿using BookStore.Commands;
 using BookStore.Core.Contracts;
-using BookStore.Data;
+using BookStore.Database;
 using System.Collections.Generic;
 
 namespace BookStore.Client.Commands
 {
     public abstract class BaseCommand : ICommand
     {
-        private IStoreContext context;
+        private IBookStoreContext context;
         private readonly IBookStoreFactory factory;
 
-        public BaseCommand(IStoreContext context, IBookStoreFactory factory)
+        public BaseCommand(IBookStoreContext context, IBookStoreFactory factory)
         {
-            //TO DO VALIDATE
+            this.context = context;
+            this.factory = factory;
         }
 
         public abstract string Execute(IList<string> parameters);
 
-        internal IBookStoreFactory Factory { get { return this.factory; } }
+        protected IBookStoreFactory Factory { get { return this.factory; } }
 
-        internal IStoreContext Context { get { return this.context; } }
+        protected IBookStoreContext Context
+        {
+            get { return this.context; }
+
+            [Ninject.Inject]
+            private set { }
+        }
     }
 }

@@ -1,9 +1,9 @@
-﻿using BookStore.Commands.Contracts;
+﻿using BookStore.Commands;
 
 namespace BookStore.Core.Factories
 {
     public interface ICommandFactory
     {
-        ICommand CreateCommand(string commandName);
+        ICommand ResolveCommand(string commandName);
     }
 }

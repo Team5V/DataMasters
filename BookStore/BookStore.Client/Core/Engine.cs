@@ -12,15 +12,12 @@ namespace BookStore.Core
         private readonly IReader reader;
         private readonly IWriter writer;
         private readonly ICommandProcessor processor;
-        private readonly StringBuilder builder;
 
         public Engine(IReader reader, IWriter writer, ICommandProcessor processor)
         {
             this.reader = reader ?? throw new ArgumentNullException("reader");
             this.writer = writer ?? throw new ArgumentNullException("writer");
             this.processor = processor ?? throw new ArgumentNullException("processor");
-
-            this.builder = new StringBuilder();
         }
 
 
@@ -34,21 +31,23 @@ namespace BookStore.Core
 
                     if (commandAsString.ToLower() == TerminationCommand.ToLower())
                     {
-                        this.writer.WriteLine(this.builder.ToString());
                         break;
                     }
 
-                    var executionResult = this.processor.ProcessCommand(commandAsString);
-                    this.builder.AppendLine(executionResult);
+                    if (commandAsString != string.Empty)
+                    {
+                        var executionResult = this.processor.ProcessCommand(commandAsString);
+                        this.writer.WriteLine(executionResult);
+                    }
                 }
                 catch (ArgumentNullException)
                 {
-                    this.builder.AppendLine("Command cannot be null or empty.");
+                    this.writer.WriteLine("Command cannot be null or empty.");
                 }
 
                 catch (Exception ex)
                 {
-                    this.builder.AppendLine(ex.Message);
+                    this.writer.WriteLine(ex.Message);
                 }
             }
         }

@@ -1,9 +1,8 @@
-﻿using BookStore.Core.Contracts;
-using System;
+﻿using System;
 
-namespace BookStore.Client.Core.Providers
+namespace BookStore.Database.Converters
 {
-    public class PdfWriter : IWriter
+    internal class PdfWriter
     {
         public void WriteLine(string text)
         {

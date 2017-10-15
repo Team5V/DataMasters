@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using BookStore.Commands.Contracts;
+using BookStore.Commands;
 
 namespace BookStore.Core.Contracts
 {
