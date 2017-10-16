@@ -41,8 +41,6 @@ namespace BookStore.DependencyInjection
             //Book commands
             this.Bind<ICommand>().To<BookCreateCommand>().Named("bookcreate");
             this.Bind<ICommand>().To<BookDeleteCommand>().Named("bookdelete");
-            this.Bind<ICommand>().To<DeleteBookCommand>().Named("bookdelete");
->>>>>>> dea4ea1f64958e8bde6a1e730cd56a9f87c46233
             this.Bind<ICommand>().To<BookUpdateCommand>().Named("bookupdate");
             this.Bind<ICommand>().To<BookReadCommand>().Named("bookread");
             //Offer commands

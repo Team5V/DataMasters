@@ -10,18 +10,12 @@ using System.Linq;
 namespace BookStore.Commands
 {
     public class BookDeleteCommand : BaseCommand
-=======
-    public class DeleteBookCommand : BaseCommand
->>>>>>> dea4ea1f64958e8bde6a1e730cd56a9f87c46233
     {
         private readonly IBookStoreContext context;
         private readonly IWriter writer;
         private readonly IReader reader;
 
         public BookDeleteCommand(IBookStoreContext context, IReader reader, IWriter writer)
-=======
-        public DeleteBookCommand(IBookStoreContext context, IReader reader, IWriter writer)
->>>>>>> dea4ea1f64958e8bde6a1e730cd56a9f87c46233
             : base(context)
         {
             Guard.WhenArgument(context, "context").IsNull().Throw();
