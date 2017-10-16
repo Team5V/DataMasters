@@ -4,10 +4,6 @@ using BookStore.Database;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BookStore.UnitTests.Commands.CreateBookCommandTest
 {
@@ -19,6 +15,7 @@ namespace BookStore.UnitTests.Commands.CreateBookCommandTest
         {
             // Arrange
             var factoryMock = new Mock<IBookStoreFactory>();
+
             // Act & Assert
             Assert.ThrowsException<ArgumentNullException>(() => new BookCreateCommand(null, factoryMock.Object));
         }
@@ -27,6 +24,7 @@ namespace BookStore.UnitTests.Commands.CreateBookCommandTest
         {
             // Arrange
             var contextMock = new Mock<IBookStoreContext>();
+
             // Act & Assert
             Assert.ThrowsException<ArgumentNullException>(() => new BookCreateCommand(contextMock.Object, null));
         }
@@ -38,11 +36,9 @@ namespace BookStore.UnitTests.Commands.CreateBookCommandTest
             var factoryMock = new Mock<IBookStoreFactory>();
 
             //Act
-
             var createBook = new BookCreateCommand(contextMock.Object, factoryMock.Object);
 
             //Assert
-
             Assert.IsNotNull(createBook);
         }
     }

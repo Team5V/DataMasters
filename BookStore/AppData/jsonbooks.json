@@ -1,0 +1,75 @@
+
+ [
+    {
+      "book": {
+      "Title": "Eloquent JavaScript, Second Edition",
+      "Language": "EN",
+      "Pages": 472,
+      "Author": "Marijn Haverbeke",
+      "Genre": "Programming"
+      }
+    },
+    { 
+      "book": {
+      "Title": "Learning JavaScript Design Patterns",
+      "Language": "EN",
+      "Pages": 254,
+      "Author": "Addy Osmani",
+      "Genre": "Programming"
+      }
+    },
+    {
+      "book": {
+      "Title": "Speaking JavaScript",
+      "Language": "EN",
+      "Pages": 460,
+      "Author": "Axel Rauschmayer",
+      "Genre": "Programming"
+      }
+    },
+    {
+      "book": {
+      "Title": "Programming JavaScript Applications",
+      "Language": "EN",
+      "Pages": 254,
+      "Author": "Eric Elliott",
+      "Genre": "Programming"
+      }
+    },
+    {
+      "book": {
+      "Title": "Understanding ECMAScript 6",
+      "Language": "EN",
+      "Pages": 352,
+      "Author": "Nicholas C. Zakas",
+      "Genre": "Programming"
+      }
+    },
+    {
+      "book": {
+      "Title": "You Don't Know JS",
+      "Language": "EN",
+      "Pages": 278,
+      "Author": "Kyle Simpson",
+      "Genre": "Programming"
+      }
+    },
+    {
+      "book": {
+      "Title": "Git Pocket Guide",
+      "Language": "EN",
+      "Pages": 234,
+      "Author": "Richard E. Silverman",
+      "Genre": "Programming"
+      }
+    },
+    {
+      "book": {
+      "Title": "Designing Evolvable Web APIs with ASP.NET",
+      "Language": "EN",
+      "Pages": 538,
+      "Author": "Glenn Block, et al.",
+      "Genre": "Programming"
+      }
+    }
+  ]

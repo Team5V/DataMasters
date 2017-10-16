@@ -28,10 +28,10 @@ namespace BookStore.DependencyInjection
         {
             this.Bind<ICommandFactory>().To<CommandFactory>().InSingletonScope();
 
-            this.Bind<IReader>().To<ConsoleReader>().InSingletonScope();
-            this.Bind<IWriter>().To<ConsoleWriter>().InSingletonScope();
-            this.Bind<ICommandProcessor>().To<CommandProcessor>().InSingletonScope();
-            this.Bind<ICommandParser>().To<CommandParser>().InSingletonScope().WithConstructorArgument(commandNames);
+            this.Bind<IReader>().To<ConsoleReader>();
+            this.Bind<IWriter>().To<ConsoleWriter>();
+            this.Bind<ICommandProcessor>().To<CommandProcessor>();
+            this.Bind<ICommandParser>().To<CommandParser>().WithConstructorArgument(commandNames);
 
             this.Bind<IEngine>().To<Engine>().InSingletonScope();
             this.Bind<IBookStoreFactory>().To<BookStoreFactory>().InSingletonScope();

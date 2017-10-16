@@ -13,20 +13,9 @@ namespace BookStore.Commands
 {
     public class BookReadCommand : BaseCommand
     {
-        private readonly IBookStoreContext context;
-        //private readonly IWriter writer;
-        //private readonly IReader reader;
-
-        public BookReadCommand(IBookStoreContext context/*, IReader reader, IWriter writer*/)
+        public BookReadCommand(IBookStoreContext context)
             : base(context)
         {
-            Guard.WhenArgument(context, "context").IsNull().Throw();
-            //Guard.WhenArgument(reader, "reader").IsNull().Throw();
-            //Guard.WhenArgument(writer, "writer").IsNull().Throw();
-
-            this.context = context;
-            //this.writer = writer;
-            //this.reader = reader;
         }
 
         public override string Execute(IList<string> parameters)
@@ -39,13 +28,12 @@ namespace BookStore.Commands
             // See if there is better exception handling
             try
             {
-                var readBook = context.Books.FirstOrDefault(t => t.Title == bookTitle);
+                var readBook = Context.Books.FirstOrDefault(t => t.Title == bookTitle);
                 result = "Book Title: " + readBook.Title + ", \n"
                         + "Pages: "+ readBook.Pages + ", \n"
                         + "Language: " + readBook.Language + ", \n"
                         + "Genre: " + readBook.Genre + ", \n"
                         + "Authors: " + string.Join(", ", readBook.Authors);
-
             }
             catch (Exception)
             {

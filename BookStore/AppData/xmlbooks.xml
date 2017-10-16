@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bookstore>
+
+<book id="bk113">
+  <title>Everyday Italian</title>
+  <author>Giada De Laurentiis</author>
+  <publish_date>2002-10-01</publish_date>
+  <price>30.00</price>
+</book>
+
+<book id="bk114">
+  <title>Harry Potter</title>
+  <author>J K. Rowling</author>
+  <publish_date>2000-09-12</publish_date>
+  <price>29.99</price>
+</book>
+
+<book id="bk115">
+  <title>XQuery Kick Start</title>
+  <author>James McGovern</author>
+  <author>Per Bothner</author>
+  <author>Kurt Cagle</author>
+  <author>James Linn</author>
+  <author>Vaidyanathan Nagarajan</author>
+  <publish_date>2012-11-09</publish_date>
+  <price>49.99</price>
+</book>
+
+<book id="bk116">
+  <title>Learning XML</title>
+  <author>Erik T. Ray</author>
+  <publish_date>1989-03-04</publish_date>
+  <price>39.95</price>
+</book>
+
+</bookstore>

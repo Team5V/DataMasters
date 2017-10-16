@@ -1,4 +1,5 @@
-﻿using BookStore.Core.Contracts;
+﻿using BookStore.Client.Commands;
+using BookStore.Core.Contracts;
 using BookStore.Database;
 using BookStore.Models;
 using Newtonsoft.Json;
@@ -8,25 +9,27 @@ using System.IO;
 
 namespace BookStore.Client
 {
-    internal class JsonReader
+    public class JsonReader : BaseCommand
     {
-        // Is Contructor needed since this is a one time operation, or we need to get the context in the method and that's it! 
-        // This is newtonsoft.Json package from NuGet
-        public void LoadJson(IBookStoreContext context)
+        public JsonReader(IBookStoreContext context) 
+            : base(context)
         {
-            using (StreamReader r = new StreamReader("file.json"))
+        }
+
+        public override string Execute(IList<string> parameters)
+        {
+            using (StreamReader r = new StreamReader("jsonbooks.json"))
             {
                 string json = r.ReadToEnd();
                 List<Book> books = JsonConvert.DeserializeObject<List<Book>>(json);
                 foreach (var book in books)
                 {
                     //check book object for flaws
-                    context.Books.Add(book);
+                    Context.Books.Add(book);
                 }
-                context.SaveChanges();
+                Context.SaveChanges();
             }
-
+            return $"Operation was successful!";
         }
-
     }
 }

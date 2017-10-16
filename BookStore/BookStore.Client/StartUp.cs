@@ -9,7 +9,7 @@ namespace BookStore.Client
         public static void Main(string[] args)
         {
             //Database.SetInitializer(new MigrateDatabaseToLatestVersion<BookStoreSystemContext, Configuration>());
-
+            
             var kernel = new StandardKernel(new BookStoreModule());
             kernel.Get<IEngine>().Start();
         }

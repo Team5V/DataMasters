@@ -41,7 +41,7 @@ namespace BookStore.Commands
                 foreach (var authorName in authorNames)
                 {
                     var holder = Context.Authors.FirstOrDefault(x => x.FullName == authorName);
-                    if (holder != null && holder.FullName == string.Empty)
+                    if (holder == null)
                     {
                         book.Authors.Add(new Author { FullName = authorName });
                     }
