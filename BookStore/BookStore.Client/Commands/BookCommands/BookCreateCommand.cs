@@ -10,7 +10,7 @@ using System.Linq;
 
 namespace BookStore.Commands
 {
-    public class BookCreateCommand : BaseCommand
+    public class BookCreateCommand : BaseCommand, ICommand
     {
         private readonly IBookStoreFactory factory;
         public BookCreateCommand(IBookStoreContext context, IBookStoreFactory factory)

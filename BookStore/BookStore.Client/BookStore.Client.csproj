@@ -59,17 +59,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands\BaseCommand.cs" />
-    <Compile Include="Commands\BookDeleteCommand.cs" />
-    <Compile Include="Commands\ICommand.cs" />
-    <Compile Include="Commands\BookCreateCommand.cs" />
-    <Compile Include="Commands\OfferCreateCommand.cs" />
+    <Compile Include="Commands\Abstractions\BaseCommand.cs" />
+    <Compile Include="Commands\BookCommands\BookDeleteCommand.cs" />
+    <Compile Include="Commands\Contracts\ICommand.cs" />
+    <Compile Include="Commands\BookCommands\BookCreateCommand.cs" />
+    <Compile Include="Commands\OfferCommands\OfferCreateCommand.cs" />
+    <Compile Include="Commands\OfferCommands\OfferReadCommand.cs" />
     <Compile Include="Commands\ReportGenerateCommand.cs" />
     <Compile Include="Commands\SaleCreateCommand.cs" />
-    <Compile Include="Commands\OfferDeleteCommand.cs" />
-    <Compile Include="Commands\BookReadCommand.cs" />
-    <Compile Include="Commands\BookUpdateCommand.cs" />
-    <Compile Include="Commands\OfferUpdateCommand.cs" />
+    <Compile Include="Commands\OfferCommands\OfferDeleteCommand.cs" />
+    <Compile Include="Commands\BookCommands\BookReadCommand.cs" />
+    <Compile Include="Commands\BookCommands\BookUpdateCommand.cs" />
+    <Compile Include="Commands\OfferCommands\OfferUpdateCommand.cs" />
     <Compile Include="Container\BookStoreModule.cs" />
     <Compile Include="Core\Converters\JsonReader.cs" />
     <Compile Include="Core\Converters\PdfWriter.cs" />

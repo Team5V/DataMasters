@@ -1,7 +1,6 @@
 ﻿using BookStore.Core.Contracts;
 using BookStore.Models;
 using BookStore.Models.Enums;
-using System;
 
 namespace BookStore.Core.Factories
 {
@@ -9,22 +8,22 @@ namespace BookStore.Core.Factories
     {
         public Book CreateBook(string title, string language, int pages, GenreType genreType)
         {
-            if (title == null || title.Length < 2 || title.Length > 50)
-            {
-                throw new ArgumentOutOfRangeException("Invalid title");
-            }
-            if (language == null || language.Length != 2)
-            {
-                throw new ArgumentOutOfRangeException("Invalid language");
-            }
-            if (pages == 0 || pages < 1 || pages > 2000)
-            {
-                throw new ArgumentOutOfRangeException("Invalid pages");
-            }
+            // Ask if this will happen automagically when the book is created with new parameters 
 
-            var book = new Book { Title = title, Language = language, Pages = pages, Genre = genreType };
-
-            return book;
+            //if (title == null || title.Length < 2 || title.Length > 50)
+            //{
+            //    throw new ArgumentOutOfRangeException("Invalid title");
+            //}
+            //if (language == null || language.Length != 2)
+            //{
+            //    throw new ArgumentOutOfRangeException("Invalid language");
+            //}
+            //if (pages == 0 || pages < 1 || pages > 2000)
+            //{
+            //    throw new ArgumentOutOfRangeException("Invalid pages");
+            //}
+            
+            return new Book{ Title = title, Language = language, Pages = pages, Genre = genreType };
         }
     }
 }

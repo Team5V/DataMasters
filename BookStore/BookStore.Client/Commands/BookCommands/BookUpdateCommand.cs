@@ -9,7 +9,7 @@ using System.Linq;
 
 namespace BookStore.Commands
 {
-    public class BookUpdateCommand : BaseCommand
+    public class BookUpdateCommand : BaseCommand, ICommand
     {
         public BookUpdateCommand(IBookStoreContext context)
             : base(context)

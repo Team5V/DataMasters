@@ -10,8 +10,9 @@ namespace BookStore.Client
         {
             //Database.SetInitializer(new MigrateDatabaseToLatestVersion<BookStoreSystemContext, Configuration>());
             
-            var kernel = new StandardKernel(new BookStoreModule());
-            kernel.Get<IEngine>().Start();
+            IKernel kernel = new StandardKernel(new BookStoreModule());
+            IEngine engine = kernel.Get<IEngine>("Engine");
+            engine.Start();
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using BookStore.Commands;
+using Bytes2you.Validation;
 using Ninject;
-using System;
 
 namespace BookStore.Core.Factories
 {
@@ -10,7 +10,9 @@ namespace BookStore.Core.Factories
 
         public CommandFactory(IKernel kernel)
         {
-            this.kernel = kernel ?? throw new ArgumentNullException("kernel");
+            Guard.WhenArgument(kernel, "kernel").IsNull().Throw();
+
+            this.kernel = kernel;
         }
 
         public ICommand ResolveCommand(string commandName)

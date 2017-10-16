@@ -1,5 +1,5 @@
-﻿using System;
-using BookStore.Core.Contracts;
+﻿using BookStore.Core.Contracts;
+using Bytes2you.Validation;
 
 namespace BookStore.Core.Providers
 {
@@ -9,16 +9,16 @@ namespace BookStore.Core.Providers
 
         public CommandProcessor(ICommandParser parser)
         {
-            this.parser = parser ?? throw new ArgumentNullException("parser");
+            Guard.WhenArgument(parser, "parser").IsNull().Throw();
+            this.parser = parser;
         }
 
         public string ProcessCommand(string commandAsString)
         {
             var command = this.parser.ParseCommand(commandAsString);
             var parameters = this.parser.ParseParameters(commandAsString);
-
-            var executionResult = command.Execute(parameters);
-            return executionResult;
+            
+            return command.Execute(parameters);
         }
     }
 }

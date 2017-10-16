@@ -17,6 +17,6 @@ namespace BookStore.Client.Commands
 
         public abstract string Execute(IList<string> parameters);
 
-        protected IBookStoreContext Context { get { return this.context; } }
+        public IBookStoreContext Context { get { return this.context; } }
     }
 }

@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace BookStore.Commands
 {
-    public class BookDeleteCommand : BaseCommand
+    public class BookDeleteCommand : BaseCommand, ICommand
     {
         public BookDeleteCommand(IBookStoreContext context)
             : base(context)

@@ -1,6 +1,5 @@
 ﻿using BookStore.Models;
 using BookStore.Models.Enums;
-using System.Collections.Generic;
 
 namespace BookStore.Core.Contracts
 {

@@ -1,6 +1,6 @@
-﻿using System;
-using System.Text;
-using BookStore.Core.Contracts;
+﻿using BookStore.Core.Contracts;
+using Bytes2you.Validation;
+using System;
 
 namespace BookStore.Core
 {
@@ -15,9 +15,13 @@ namespace BookStore.Core
 
         public Engine(IReader reader, IWriter writer, ICommandProcessor processor)
         {
-            this.reader = reader ?? throw new ArgumentNullException("reader");
-            this.writer = writer ?? throw new ArgumentNullException("writer");
-            this.processor = processor ?? throw new ArgumentNullException("processor");
+            Guard.WhenArgument(reader, "reader").IsNull().Throw();
+            Guard.WhenArgument(writer, "writer").IsNull().Throw();
+            Guard.WhenArgument(processor, "processor").IsNull().Throw();
+
+            this.reader = reader;
+            this.writer = writer;
+            this.processor = processor;
         }
 
 

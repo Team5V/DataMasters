@@ -1,12 +1,13 @@
-﻿using BookStore.Core.Contracts;
+﻿using BookStore.Commands;
+using BookStore.Core.Contracts;
 using BookStore.Database;
 using System.Collections.Generic;
 
 namespace BookStore.Client.Commands
 {
-    public class OfferCreateCommand : BaseCommand
+    public class OfferUpdateCommand : BaseCommand, ICommand
     {
-        public OfferCreateCommand(IBookStoreContext context, IBookStoreFactory factory) : base(context)
+        public OfferUpdateCommand(IBookStoreContext context, IBookStoreFactory factory) : base(context)
         {
         }
 

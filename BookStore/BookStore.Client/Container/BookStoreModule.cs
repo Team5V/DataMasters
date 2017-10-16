@@ -1,4 +1,5 @@
-﻿using BookStore.Client.Commands;
+﻿using BookStore.Client;
+using BookStore.Client.Commands;
 using BookStore.Commands;
 using BookStore.Core;
 using BookStore.Core.Contracts;
@@ -6,24 +7,11 @@ using BookStore.Core.Factories;
 using BookStore.Core.Providers;
 using BookStore.Database;
 using Ninject.Modules;
-using System.Collections.Generic;
 
 namespace BookStore.DependencyInjection
 {
     public class BookStoreModule : NinjectModule
     {
-        private readonly IEnumerable<string> commandNames = new string[] {
-                "bookcreate",
-                "bookread",
-                "bookupdate",
-                "bookdelete",
-                "offercreate",
-                "offerdelete",
-                "offerupdate",
-                "reportgenerate",
-                "saleconduct",
-            };
-
         public override void Load()
         {
             this.Bind<ICommandFactory>().To<CommandFactory>().InSingletonScope();
@@ -31,9 +19,9 @@ namespace BookStore.DependencyInjection
             this.Bind<IReader>().To<ConsoleReader>();
             this.Bind<IWriter>().To<ConsoleWriter>();
             this.Bind<ICommandProcessor>().To<CommandProcessor>();
-            this.Bind<ICommandParser>().To<CommandParser>().WithConstructorArgument(commandNames);
+            this.Bind<ICommandParser>().To<CommandParser>();
 
-            this.Bind<IEngine>().To<Engine>().InSingletonScope();
+            this.Bind<IEngine>().To<Engine>().InSingletonScope().Named("Engine");
             this.Bind<IBookStoreFactory>().To<BookStoreFactory>().InSingletonScope();
 
             //DataContext
@@ -51,6 +39,8 @@ namespace BookStore.DependencyInjection
             this.Bind<ICommand>().To<ReportGenerateCommand>().Named("reportgenerate");
             //sale commands
             this.Bind<ICommand>().To<SaleCreateCommand>().Named("saleconduct");
+            this.Bind<ICommand>().To<JsonReader>().Named("jsonreader");
+           
         }
     }
 }
