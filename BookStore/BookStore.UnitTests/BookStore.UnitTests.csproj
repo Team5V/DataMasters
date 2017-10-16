@@ -73,6 +73,11 @@
     <Compile Include="Commands\CreateBookCommandTests\Constructor_Should.cs" />
     <Compile Include="Commands\CreateBookCommandTests\Execute_Should.cs" />
     <Compile Include="Commands\UpdateBookCommandTests\Constructor_Should.cs" />
+    <Compile Include="Core\Providers\CommandParserTests\Constructor_Should.cs" />
+    <Compile Include="Core\Providers\CommandParserTests\ParseCommand_Should.cs" />
+    <Compile Include="Core\Providers\CommandParserTests\ParseParameters_Should.cs" />
+    <Compile Include="Core\Providers\CommandProcessorTests\Constructor_Should.cs" />
+    <Compile Include="Core\Providers\CommandProcessorTests\ProcessCommand_Should.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -94,6 +99,7 @@
       <Name>BookStore.Models</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

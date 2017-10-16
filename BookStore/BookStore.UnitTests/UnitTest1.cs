@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace BookStore.UnitTests
 {
+    [Ignore]
     [TestClass]
     public class UnitTest1
     {
