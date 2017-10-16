@@ -25,8 +25,9 @@ namespace BookStore.Commands
             Book book = Context.Books.FirstOrDefault(b => b.Title == bookTitle);
             //check for existence
             Context.Books.Remove(book);
+            Context.SaveChanges();
 
-            return $"Deleted {book.Title} from {string.Join(", ", book.Authors)}";
+            return $"Deleted {book.Title} from Library";
         }
     }
 }

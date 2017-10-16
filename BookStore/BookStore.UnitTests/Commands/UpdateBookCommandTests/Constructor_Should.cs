@@ -15,55 +15,21 @@ namespace BookStore.UnitTests.Commands.UpdateBookCommandTests
         {
             // Arrange
             var factoryMock = new Mock<IBookStoreFactory>();
-            var readerMock = new Mock<IReader>();
-            var writerMock = new Mock<IWriter>();
             // Act & Assert
-            Assert.ThrowsException<ArgumentNullException>(() => new BookUpdateCommand(null, factoryMock.Object, writerMock.Object, readerMock.Object));
-        }
-        [TestMethod]
-        public void ThrowException_WhenFactoryIsNull()
-        {
-            // Arrange
-            var contextMock = new Mock<IBookStoreContext>();
-            var readerMock = new Mock<IReader>();
-            var writerMock = new Mock<IWriter>();
-            // Act & Assert
-            Assert.ThrowsException<ArgumentNullException>(() => new BookUpdateCommand(contextMock.Object, null, writerMock.Object, readerMock.Object));
-        }
-        [TestMethod]
-        public void ThrowException_WhenWriterIsNull()
-        {
-            // Arrange
-            var contextMock = new Mock<IBookStoreContext>();
-            var factoryMock = new Mock<IBookStoreFactory>();
-            var readerMock = new Mock<IReader>();
-            // Act & Assert
-            Assert.ThrowsException<ArgumentNullException>(() => new BookUpdateCommand(contextMock.Object, factoryMock.Object, null, readerMock.Object));
-        }
-        [TestMethod]
-        public void ThrowException_WhenReaderIsNull()
-        {
-            // Arrange
-            var contextMock = new Mock<IBookStoreContext>();
-            var factoryMock = new Mock<IBookStoreFactory>();
-            var writerMock = new Mock<IWriter>();
-            // Act & Assert
-            Assert.ThrowsException<ArgumentNullException>(() => new BookUpdateCommand(contextMock.Object, factoryMock.Object, writerMock.Object, null));
+            Assert
+                .ThrowsException<ArgumentNullException>
+                (() => new BookUpdateCommand(null));
         }
         [TestMethod]
         public void ReturnSuccess_WhenParametersAreCorrect()
         {
             //Arrange
             var contextMock = new Mock<IBookStoreContext>();
-            var factoryMock = new Mock<IBookStoreFactory>();
-            var readerMock = new Mock<IReader>();
-            var writerMock = new Mock<IWriter>();
-            //Act
 
-            var updateBook = new BookUpdateCommand(contextMock.Object, factoryMock.Object, writerMock.Object, readerMock.Object);
+            //Act
+            var updateBook = new BookUpdateCommand(contextMock.Object);
 
             //Assert
-
             Assert.IsNotNull(updateBook);
         }
     }

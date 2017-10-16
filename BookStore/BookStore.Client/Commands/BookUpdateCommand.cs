@@ -46,12 +46,12 @@ namespace BookStore.Commands
                     break;
                 case "authors":
                     var authors = newValue.Split(',');
-                    foreach (var item in authors)
+                    foreach (var author in authors)
                     {
-                        var holder = Context.Authors.FirstOrDefault(x => x.FullName == item);
+                        var holder = Context.Authors.FirstOrDefault(x => x.FullName == author);
                         if (holder.FullName == string.Empty)
                         {
-                            book.Authors.Add(new Author { FullName = item });
+                            book.Authors.Add(new Author { FullName = author });
                         }
                         else
                         {

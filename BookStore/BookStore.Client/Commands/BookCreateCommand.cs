@@ -23,13 +23,13 @@ namespace BookStore.Commands
         // Syntax
         // bookcreate:title;language;pages;Author1,Author2,Author3;GenreType
         // test bookcreate:Nai-qkata Kniga;BG;80;Author1,Author2,Author3;Comedy
-        public override string Execute(IList<string> props)
+        public override string Execute(IList<string> parameters)
         {
-            var title = props[0];
-            var language = props[1];
-            var pages = int.Parse(props[2]);
-            var authorNames = props[3].Split(',');
-            var genre = (GenreType)Enum.Parse(typeof(GenreType), props[4]);
+            var title = parameters[0];
+            var language = parameters[1];
+            var pages = int.Parse(parameters[2]);
+            var authorNames = parameters[3].Split(',');
+            var genre = (GenreType)Enum.Parse(typeof(GenreType), parameters[4]);
 
             var book = this.factory.CreateBook(title, language, pages, genre); //NoAuthors add yet
 
@@ -38,12 +38,12 @@ namespace BookStore.Commands
             if (Context.Books.FirstOrDefault(x => x.Title == title) == null)
             {
                 //Author Check to add or set ids to tables
-                foreach (var item in authorNames)
+                foreach (var authorName in authorNames)
                 {
-                    var holder = Context.Authors.FirstOrDefault(x => x.FullName == item);
+                    var holder = Context.Authors.FirstOrDefault(x => x.FullName == authorName);
                     if (holder != null && holder.FullName == string.Empty)
                     {
-                        book.Authors.Add(new Author { FullName = item });
+                        book.Authors.Add(new Author { FullName = authorName });
                     }
                     else
                     {
