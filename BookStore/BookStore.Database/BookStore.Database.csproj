@@ -53,10 +53,7 @@
   <ItemGroup>
     <Compile Include="BookStoreContext.cs" />
     <Compile Include="IBookStoreContext.cs" />
-    <Compile Include="Converters\JsonReader.cs" />
-    <Compile Include="Converters\PdfWriter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Converters\XmlReader.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

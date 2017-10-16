@@ -3,6 +3,7 @@ using BookStore.Core.Contracts;
 using BookStore.Database;
 using BookStore.Models;
 using BookStore.Models.Enums;
+using Bytes2you.Validation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,10 +12,12 @@ namespace BookStore.Commands
 {
     public class BookCreateCommand : BaseCommand
     {
-        //NOT COMPLEATED
+        private readonly IBookStoreFactory factory;
         public BookCreateCommand(IBookStoreContext context, IBookStoreFactory factory)
             : base(context)
         {
+            Guard.WhenArgument(factory, "factory").IsNull().Throw();
+            this.factory = factory;
         }
 
         // Syntax
@@ -28,7 +31,7 @@ namespace BookStore.Commands
             var authorNames = props[3].Split(',');
             var genre = (GenreType)Enum.Parse(typeof(GenreType), props[4]);
 
-            var book = Factory.CreateBook(title, language, pages, genre); //NoAuthors add yet
+            var book = this.factory.CreateBook(title, language, pages, genre); //NoAuthors add yet
 
             var result = "";
             //Book title Check
@@ -38,7 +41,7 @@ namespace BookStore.Commands
                 foreach (var item in authorNames)
                 {
                     var holder = Context.Authors.FirstOrDefault(x => x.FullName == item);
-                    if (holder.FullName == string.Empty)
+                    if (holder != null && holder.FullName == string.Empty)
                     {
                         book.Authors.Add(new Author { FullName = item });
                     }

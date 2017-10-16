@@ -4,9 +4,9 @@ using System.Collections.Generic;
 
 namespace BookStore.Client.Commands
 {
-    public class SaleConductCommand : BaseCommand
+    public class SaleCreateCommand : BaseCommand
     {
-        public SaleConductCommand(IBookStoreContext context, IBookStoreFactory factory) : base(context)
+        public SaleCreateCommand(IBookStoreContext context, IBookStoreFactory factory) : base(context)
         {
         }
 

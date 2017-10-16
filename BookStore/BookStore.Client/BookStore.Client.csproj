@@ -62,12 +62,15 @@
     <Compile Include="Commands\BookCreateCommand.cs" />
     <Compile Include="Commands\OfferCreateCommand.cs" />
     <Compile Include="Commands\ReportGenerateCommand.cs" />
-    <Compile Include="Commands\SaleConductCommand.cs" />
+    <Compile Include="Commands\SaleCreateCommand.cs" />
     <Compile Include="Commands\OfferDeleteCommand.cs" />
     <Compile Include="Commands\BookReadCommand.cs" />
     <Compile Include="Commands\BookUpdateCommand.cs" />
     <Compile Include="Commands\OfferUpdateCommand.cs" />
     <Compile Include="Container\BookStoreModule.cs" />
+    <Compile Include="Core\Converters\JsonReader.cs" />
+    <Compile Include="Core\Converters\PdfWriter.cs" />
+    <Compile Include="Core\Converters\XMLConverter.cs" />
     <Compile Include="Core\Contracts\ICommandParser.cs" />
     <Compile Include="Core\Contracts\ICommandProcessor.cs" />
     <Compile Include="Core\Contracts\IEngine.cs" />
