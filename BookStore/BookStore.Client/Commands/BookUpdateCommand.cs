@@ -17,7 +17,7 @@ namespace BookStore.Commands
         private readonly IReader reader;
 
         public BookUpdateCommand(IBookStoreContext context, IBookStoreFactory factory, IWriter writer, IReader reader)
-            : base(context, factory)
+            : base(context)
         {
             Guard.WhenArgument(context, "context").IsNull().Throw();
             Guard.WhenArgument(factory, "factory").IsNull().Throw();

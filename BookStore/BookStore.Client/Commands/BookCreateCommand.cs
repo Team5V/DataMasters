@@ -13,7 +13,7 @@ namespace BookStore.Commands
     {
         //NOT COMPLEATED
         public BookCreateCommand(IBookStoreContext context, IBookStoreFactory factory)
-            : base(context, factory)
+            : base(context)
         {
         }
 
@@ -54,7 +54,7 @@ namespace BookStore.Commands
             }
             else
             {
-                result = $"{title} allready exists.";
+                result = $"{title} already exists.";
             }
             return result;
         }

@@ -6,7 +6,7 @@ namespace BookStore.Client.Commands
 {
     public class OfferCreateCommand : BaseCommand
     {
-        public OfferCreateCommand(IBookStoreContext context, IBookStoreFactory factory) : base(context, factory)
+        public OfferCreateCommand(IBookStoreContext context, IBookStoreFactory factory) : base(context)
         {
         }
 

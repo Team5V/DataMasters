@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\BaseCommand.cs" />
+    <Compile Include="Commands\BookDeleteCommand.cs" />
     <Compile Include="Commands\ICommand.cs" />
     <Compile Include="Commands\BookCreateCommand.cs" />
     <Compile Include="Commands\OfferCreateCommand.cs" />
