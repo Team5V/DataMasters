@@ -13,12 +13,8 @@ namespace BookStore.UnitTests.Commands.UpdateBookCommandTests
         [TestMethod]
         public void ThrowException_WhenContextIsNull()
         {
-            // Arrange
-            var factoryMock = new Mock<IBookStoreFactory>();
-            // Act & Assert
-            Assert
-                .ThrowsException<ArgumentNullException>
-                (() => new BookUpdateCommand(null));
+            // Arrange & Act & Assert
+            Assert.ThrowsException<ArgumentNullException>(() => new BookUpdateCommand(null));
         }
         [TestMethod]
         public void ReturnSuccess_WhenParametersAreCorrect()
