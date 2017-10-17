@@ -1,5 +1,7 @@
 ﻿using BookStore.Client;
 using BookStore.Client.Commands;
+using BookStore.Client.Core.Contracts;
+using BookStore.Client.Core.Converters;
 using BookStore.Commands;
 using BookStore.Core;
 using BookStore.Core.Contracts;
@@ -40,6 +42,8 @@ namespace BookStore.DependencyInjection
             //sale commands
             this.Bind<ICommand>().To<SaleCreateCommand>().Named("saleconduct");
             this.Bind<ICommand>().To<JsonReader>().Named("jsonreader");
+            this.Bind<IPdfExporter>().To<PdfExporter>();
+
            
         }
     }
