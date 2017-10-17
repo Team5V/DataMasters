@@ -14,7 +14,6 @@ namespace BookStore.Commands
         public BookUpdateCommand(IBookStoreContext context)
             : base(context)
         {
-            Guard.WhenArgument(context, "No database loaded.").IsNull().Throw();
         }
         //syntax bookupdate:id;property;newValue;
         //Title Language Pages Genre Authors

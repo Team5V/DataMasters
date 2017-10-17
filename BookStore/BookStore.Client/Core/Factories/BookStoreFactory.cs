@@ -10,6 +10,8 @@ namespace BookStore.Core.Factories
         {
             // Ask if this will happen automagically when the book is created with new parameters 
 
+            /// this is not unit testable!!!!
+
             //if (title == null || title.Length < 2 || title.Length > 50)
             //{
             //    throw new ArgumentOutOfRangeException("Invalid title");
@@ -22,7 +24,7 @@ namespace BookStore.Core.Factories
             //{
             //    throw new ArgumentOutOfRangeException("Invalid pages");
             //}
-            
+
             return new Book{ Title = title, Language = language, Pages = pages, Genre = genreType };
         }
     }

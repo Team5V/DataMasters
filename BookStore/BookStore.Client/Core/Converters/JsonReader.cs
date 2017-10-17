@@ -19,7 +19,7 @@ namespace BookStore.Client
         // TODO: Fix Deserializing since it needs a structure to deserialize the object
         public override string Execute(IList<string> parameters)
         {
-            var path = "..\\..\\..\\AppData\\jsonbooks.json";
+            var path = "..\\..\\..\\BookStore.AppData\\jsonbooks.json";
             using (StreamReader reader = new StreamReader(path))
             {
                 string json = reader.ReadToEnd();

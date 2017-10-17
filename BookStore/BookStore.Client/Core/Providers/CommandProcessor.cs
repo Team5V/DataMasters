@@ -17,8 +17,8 @@ namespace BookStore.Core.Providers
         {
             var command = this.parser.ParseCommand(commandAsString);
             var parameters = this.parser.ParseParameters(commandAsString);
-            
-            return command.Execute(parameters);
+            var result = command.Execute(parameters);
+            return result;
         }
     }
 }
