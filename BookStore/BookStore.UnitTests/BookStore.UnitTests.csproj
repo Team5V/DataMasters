@@ -69,10 +69,10 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands\BaseCommandTests\Constructor_Should.cs" />
-    <Compile Include="Commands\CreateBookCommandTests\Constructor_Should.cs" />
-    <Compile Include="Commands\CreateBookCommandTests\Execute_Should.cs" />
-    <Compile Include="Commands\UpdateBookCommandTests\Constructor_Should.cs" />
+    <None Include="Commands\BaseCommandTests\Constructor_Should.cs" />
+    <Compile Include="Commands\BookCreateCommandTests\Constructor_Should.cs" />
+    <Compile Include="Commands\BookCreateCommandTests\Execute_Should.cs" />
+    <Compile Include="Commands\BookUpdateCommandTests\Constructor_Should.cs" />
     <Compile Include="Core\Factories\BookStoreFactoryTests\CreateBook_Should.cs" />
     <Compile Include="Core\Factories\CommandFactoryTests\Constructor_Should.cs" />
     <Compile Include="Core\Providers\CommandParserTests\Constructor_Should.cs" />
@@ -80,7 +80,6 @@
     <Compile Include="Core\Providers\CommandParserTests\ParseParameters_Should.cs" />
     <Compile Include="Core\Providers\CommandProcessorTests\Constructor_Should.cs" />
     <Compile Include="Core\Providers\CommandProcessorTests\ProcessCommand_Should.cs" />
-    <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

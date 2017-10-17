@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-using BookStore.Commands;
+﻿using BookStore.Client.Commands;
+using System.Collections.Generic;
 
-namespace BookStore.Core.Contracts
+namespace BookStore.Client.Core
 {
     public interface ICommandParser
     {

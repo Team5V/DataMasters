@@ -1,4 +1,4 @@
-﻿namespace BookStore.Models.Enums
+﻿namespace BookStore.Models
 {
     public enum GenreType
     {

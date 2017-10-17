@@ -1,5 +1,4 @@
-﻿using BookStore.Commands;
-using BookStore.Core.Contracts;
+﻿using BookStore.Client.Commands;
 using BookStore.Database;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;

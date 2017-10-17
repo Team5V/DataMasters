@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace BookStore.Commands
+namespace BookStore.Client.Commands
 {
     public interface ICommand
     {

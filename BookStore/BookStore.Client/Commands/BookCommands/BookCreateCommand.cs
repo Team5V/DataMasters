@@ -1,14 +1,12 @@
-﻿using BookStore.Client.Commands;
-using BookStore.Core.Contracts;
+﻿using BookStore.Client.Core;
+using BookStore.Client.Utils;
 using BookStore.Database;
 using BookStore.Models;
-using BookStore.Models.Enums;
 using Bytes2you.Validation;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
-namespace BookStore.Commands
+namespace BookStore.Client.Commands
 {
     public class BookCreateCommand : BaseCommand, ICommand
     {
@@ -16,50 +14,34 @@ namespace BookStore.Commands
         public BookCreateCommand(IBookStoreContext context, IBookStoreFactory factory)
             : base(context)
         {
-            Guard.WhenArgument(factory, "factory").IsNull().Throw();
+            Guard.WhenArgument(factory, Msg.ErrFactory).IsNull().Throw();
             this.factory = factory;
         }
 
-        // Syntax
-        // bookcreate:title;language;pages;Author1,Author2,Author3;GenreType
-        // test bookcreate:Nai-qkata Kniga;BG;80;Author1,Author2,Author3;Comedy
+        //Syntax bookcreate:title;language;pages;Author1,Author2,Author3;GenreType
         public override string Execute(IList<string> parameters)
         {
+            Guard.WhenArgument(parameters, Msg.ErrParams).IsNullOrEmpty().Throw();
+            Guard.WhenArgument(parameters.Count, Msg.ErrLess).IsLessThan(5).Throw();
+
             var title = parameters[0];
+
+            //Tuk trqbva da se fixne che na prazna baza mi iska da gi compare
+            //  if (Context.Books.FirstOrDefault(x => x.Title == title) != null)
+            //  {
+            //      return Msg.ErrExist;
+            //  }
+
             var language = parameters[1];
             var pages = int.Parse(parameters[2]);
             var authorNames = parameters[3].Split(',');
             var genre = (GenreType)Enum.Parse(typeof(GenreType), parameters[4]);
 
-            var book = this.factory.CreateBook(title, language, pages, genre); //NoAuthors add yet
+            var book = this.factory.CreateBook(title, language, pages, this.ResolveAuthors(authorNames), genre);
 
-            var result = "";
-            //Book title Check
-            if (Context.Books.FirstOrDefault(x => x.Title == title) == null)
-            {
-                //Author Check to add or set ids to tables
-                foreach (var authorName in authorNames)
-                {
-                    var holder = Context.Authors.FirstOrDefault(x => x.FullName == authorName);
-                    if (holder == null)
-                    {
-                        book.Authors.Add(new Author { FullName = authorName });
-                    }
-                    else
-                    {
-                        book.Authors.Add(holder);
-                    }
-                }
-
-                this.Context.Books.Add(book);
-                this.Context.SaveChanges();
-                result = $"Successfully added {title}.";
-            }
-            else
-            {
-                result = $"{title} already exists.";
-            }
-            return result;
+            this.Context.Books.Add(book);
+            this.Context.SaveChanges();
+            return Msg.Create;
         }
     }
 }

@@ -1,6 +1,5 @@
-﻿using BookStore.Commands;
-using BookStore.Core.Contracts;
-using BookStore.Core.Providers;
+﻿using BookStore.Client.Commands;
+using BookStore.Client.Core;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System.Collections.Generic;
@@ -34,7 +33,7 @@ namespace BookStore.UnitTests.Core.Providers.CommandProcessorTests
             parserMock.Setup(p => p.ParseCommand(commandAsString)).Returns(commandMock.Object);
             commandMock.Setup(c => c.Execute(parameters)).Returns(actualResult);
 
-            
+
             // Act
             var expectedResult = commandProcessor.ProcessCommand(commandAsString);
 

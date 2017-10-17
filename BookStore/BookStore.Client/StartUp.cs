@@ -1,5 +1,5 @@
-﻿using BookStore.Core.Contracts;
-using BookStore.DependencyInjection;
+﻿using BookStore.Client.Container;
+using BookStore.Client.Core;
 using Ninject;
 
 namespace BookStore.Client
@@ -9,10 +9,10 @@ namespace BookStore.Client
         public static void Main(string[] args)
         {
             //Database.SetInitializer(new MigrateDatabaseToLatestVersion<BookStoreSystemContext, Configuration>());
-            
+
             IKernel kernel = new StandardKernel(new BookStoreModule());
-            IEngine engine = kernel.Get<IEngine>("Engine");
-            engine.Start();
+            kernel.Get<IEngine>().Start();
+
         }
     }
 }
