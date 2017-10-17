@@ -13,7 +13,7 @@ namespace BookStore.UnitTests.Core.Providers.CommandProcessorTests
         [TestMethod]
         public void ReturnExecutedString_WhenParametersAreCorrect()
         {
-            // Arrange 
+            // Arrange
             var parserMock = new Mock<ICommandParser>();
             var commandMock = new Mock<ICommand>();
 
@@ -31,6 +31,7 @@ namespace BookStore.UnitTests.Core.Providers.CommandProcessorTests
             var actualResult = "Successfully added Nai-qkata Kniga.";
             var commandProcessor = new CommandProcessor(parserMock.Object);
             parserMock.Setup(p => p.ParseParameters(commandAsString)).Returns(parameters);
+            parserMock.Setup(p => p.ParseCommand(commandAsString)).Returns(commandMock.Object);
             commandMock.Setup(c => c.Execute(parameters)).Returns(actualResult);
 
             

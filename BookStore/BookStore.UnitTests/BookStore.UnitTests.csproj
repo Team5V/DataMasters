@@ -73,6 +73,8 @@
     <Compile Include="Commands\CreateBookCommandTests\Constructor_Should.cs" />
     <Compile Include="Commands\CreateBookCommandTests\Execute_Should.cs" />
     <Compile Include="Commands\UpdateBookCommandTests\Constructor_Should.cs" />
+    <Compile Include="Core\Factories\BookStoreFactoryTests\CreateBook_Should.cs" />
+    <Compile Include="Core\Factories\CommandFactoryTests\Constructor_Should.cs" />
     <Compile Include="Core\Providers\CommandParserTests\Constructor_Should.cs" />
     <Compile Include="Core\Providers\CommandParserTests\ParseCommand_Should.cs" />
     <Compile Include="Core\Providers\CommandParserTests\ParseParameters_Should.cs" />
