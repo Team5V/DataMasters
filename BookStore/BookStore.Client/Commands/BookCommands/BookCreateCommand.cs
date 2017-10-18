@@ -1,5 +1,7 @@
-﻿using BookStore.Database;
+﻿using BookStore.Client.Utils;
+using BookStore.Database;
 using BookStore.Models;
+using Bytes2you.Validation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,46 +12,36 @@ namespace BookStore.Client.Commands
     {
         public BookCreateCommand(IBookStoreContext context) : base(context) { }
 
-        // Syntax
         // bookcreate:title;language;pages;Author1,Author2,Author3;GenreType
-        // test bookcreate:Nai-qkata Kniga;BG;80;Author1,Author2,Author3;Comedy
         public override string Execute(IList<string> parameters)
         {
+            Guard.WhenArgument(parameters, Err.Params).IsNullOrEmpty().Throw();
+            Guard.WhenArgument(parameters.Count, Err.Less).IsLessThan(5).Throw();
+
             var title = parameters[0];
-            var language = parameters[1];
-            var pages = int.Parse(parameters[2]);
-            var authorNames = parameters[3].Split(',');
-            var genre = (GenreType)Enum.Parse(typeof(GenreType), parameters[4]);
-
-            var book = new Book();//this.factory.CreateBook(title, language, pages, genre); //NoAuthors add yet
-
-            var result = "";
-            //Book title Check
-            if (Context.Books.FirstOrDefault(x => x.Title == title) == null)
+            if (this.Context.Books.Where(x => x.Title == title) != null) // ne raboti dobre na kogato nqma zapisi
             {
-                //Author Check to add or set ids to tables
-                foreach (var authorName in authorNames)
-                {
-                    var holder = Context.Authors.FirstOrDefault(x => x.FullName == authorName);
-                    if (holder == null)
-                    {
-                        book.Authors.Add(new Author { FullName = authorName });
-                    }
-                    else
-                    {
-                        book.Authors.Add(holder);
-                    }
-                }
+                return "Book already exist";
+            }
+
+            try
+            {
+                var language = parameters[1];
+                var pages = int.Parse(parameters[2]);
+                var authorNames = parameters[3].Split(',');
+                var genre = (GenreType)Enum.Parse(typeof(GenreType), parameters[4]);
+                var book = new Book { Title = title, Language = language, Pages = pages, Genre = genre };
+
+                book.Authors = this.Context.ResolveAuthors(authorNames);
 
                 this.Context.Books.Add(book);
                 this.Context.SaveChanges();
-                result = $"Successfully added {title}.";
             }
-            else
+            catch (Exception ex)
             {
-                result = $"{title} already exists.";
+                return ex.Message;
             }
-            return result;
+            return $"Successfully added {title}.";
         }
     }
 }
