@@ -1,10 +1,11 @@
 ﻿using BookStore.Client.Commands;
+using BookStore.Client.Core;
 using BookStore.Database;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System;
 
-namespace BookStore.UnitTests.Commands.UpdateBookCommandTests
+namespace BookStore.UnitTests.Commands.ReportGenerateCommandTests
 {
     [TestClass]
     public class Constructor_Should
@@ -12,17 +13,20 @@ namespace BookStore.UnitTests.Commands.UpdateBookCommandTests
         [TestMethod]
         public void ThrowException_WhenContextIsNull()
         {
-            // Arrange & Act & Assert
-            Assert.ThrowsException<ArgumentNullException>(() => new BookUpdateCommand(null));
+            // Arrange 
+            var contextMock = new Mock<IBookStoreContext>();
+            // Act & Assert
+            Assert.ThrowsException<ArgumentNullException>(() => new ReportGenerateCommand(contextMock.Object,null));
         }
         [TestMethod]
         public void ReturnSuccess_WhenParametersAreCorrect()
         {
             //Arrange
             var contextMock = new Mock<IBookStoreContext>();
+            var pdfExporterMock = new Mock<IPdfExporter>();
 
             //Act
-            var updateBook = new BookUpdateCommand(contextMock.Object);
+            var updateBook = new ReportGenerateCommand(contextMock.Object,pdfExporterMock.Object);
 
             //Assert
             Assert.IsNotNull(updateBook);

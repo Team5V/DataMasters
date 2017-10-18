@@ -1,5 +1,4 @@
-﻿using BookStore.Commands;
-using BookStore.Core.Contracts;
+﻿using BookStore.Client.Commands;
 using BookStore.Database;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
@@ -13,30 +12,18 @@ namespace BookStore.UnitTests.Commands.CreateBookCommandTest
         [TestMethod]
         public void ThrowException_WhenContextIsNull()
         {
-            // Arrange
-            var factoryMock = new Mock<IBookStoreFactory>();
-
-            // Act & Assert
-            Assert.ThrowsException<ArgumentNullException>(() => new BookCreateCommand(null, factoryMock.Object));
+            // Arrange & Act & Assert
+            Assert.ThrowsException<ArgumentNullException>(() => new BookCreateCommand(null));
         }
-        [TestMethod]
-        public void ThrowException_WhenFactoryIsNull()
-        {
-            // Arrange
-            var contextMock = new Mock<IBookStoreContext>();
-
-            // Act & Assert
-            Assert.ThrowsException<ArgumentNullException>(() => new BookCreateCommand(contextMock.Object, null));
-        }
+        
         [TestMethod]
         public void ReturnSuccess_WhenParametersAreCorrect()
         {
             //Arrange
             var contextMock = new Mock<IBookStoreContext>();
-            var factoryMock = new Mock<IBookStoreFactory>();
 
             //Act
-            var createBook = new BookCreateCommand(contextMock.Object, factoryMock.Object);
+            var createBook = new BookCreateCommand(contextMock.Object);
 
             //Assert
             Assert.IsNotNull(createBook);

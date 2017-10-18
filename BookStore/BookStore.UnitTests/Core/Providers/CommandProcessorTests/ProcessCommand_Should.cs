@@ -1,6 +1,5 @@
-﻿using BookStore.Commands;
-using BookStore.Core.Contracts;
-using BookStore.Core.Providers;
+﻿using BookStore.Client.Commands;
+using BookStore.Client.Core;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System.Collections.Generic;
