@@ -13,6 +13,8 @@ namespace BookStore.Database
 
         public IDbSet<Book> Books { get; set; }
         public IDbSet<Author> Authors { get; set; }
+        public IDbSet<Offer> Offers { get; set; }
+        public IDbSet<Sale> Sales { get; set; }
 
         int IBookStoreContext.SaveChanges()
         {

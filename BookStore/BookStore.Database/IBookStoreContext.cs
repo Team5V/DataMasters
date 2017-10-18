@@ -9,6 +9,10 @@ namespace BookStore.Database
 
         IDbSet<Author> Authors { get; set; }
 
+        IDbSet<Offer> Offers { get; set; }
+
+        IDbSet<Sale> Sales { get; set; }
+
         int SaveChanges();
     }
 }

@@ -57,7 +57,9 @@
     <Compile Include="Author.cs" />
     <Compile Include="Book.cs" />
     <Compile Include="Enums\GenreType.cs" />
+    <Compile Include="Offer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sale.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
