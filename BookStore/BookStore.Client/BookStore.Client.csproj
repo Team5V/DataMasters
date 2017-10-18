@@ -76,7 +76,6 @@
     <Compile Include="Commands\OfferCommands\OfferUpdateCommand.cs" />
     <Compile Include="Container\BookStoreModule.cs" />
     <Compile Include="Core\Contracts\IPdfExporter.cs" />
-    <Compile Include="Core\Converters\JsonReader.cs" />
     <Compile Include="Core\Converters\PdfExporter.cs" />
     <Compile Include="Core\Converters\XMLConverter.cs" />
     <Compile Include="Core\Contracts\ICommandParser.cs" />

@@ -34,7 +34,6 @@ namespace BookStore.DependencyInjection
             this.Bind<ICommand>().To<ReportGenerateCommand>().Named("reportgenerate");
             //sale commands
             this.Bind<ICommand>().To<SaleCreateCommand>().Named("saleconduct");
-            this.Bind<ICommand>().To<JsonReader>().Named("jsonreader");
             this.Bind<IPdfExporter>().To<PdfExporter>();
 
            

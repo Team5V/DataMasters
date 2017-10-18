@@ -1,33 +1,86 @@
+using BookStore.Models;
+using Newtonsoft.Json.Linq;
+using System.Collections.Generic;
+using System.Data.Entity.Migrations;
+using System.IO;
+using System.Linq;
+
 namespace BookStore.Data.Migrations
 {
-    using System;
-    using System.Data.Entity;
-    using System.Data.Entity.Migrations;
-    using System.Linq;
 
-    public sealed class Configuration : DbMigrationsConfiguration<BookStore.Data.BookStoreContext>
+    public sealed class Configuration : DbMigrationsConfiguration<BookStoreContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
             AutomaticMigrationDataLossAllowed = false;
-            ContextKey = "BookStore.Database.BookStoreContext";
         }
 
-        protected override void Seed(BookStore.Data.BookStoreContext context)
+        protected override void Seed(BookStoreContext context)
         {
-            //  This method will be called after migrating to the latest version.
+            this.AuthorSeed(context);
+            context.SaveChanges();
+        }
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+        private void BookSeed(BookStoreContext context)
+        {
+            if (!context.Books.Any())
+            {
+                using (StreamReader reader = new StreamReader(@"..\..\..\BookStore.AppData\jsonbooks.json"))
+                {
+                    string json = reader.ReadToEnd();
+                    dynamic parsed = JObject.Parse(json);
+                    foreach (var wrappedBooks in parsed)
+                    {
+                        foreach (var books in wrappedBooks)
+                        {
+                            foreach (var book in books)
+                            {
+                                Book bookToAdd = new Book();
+                                bookToAdd.Title = book.Title;
+                                bookToAdd.Authors = new HashSet<Author>();
+                                bookToAdd.Language = book.Language;
+                                bookToAdd.Genre = book.Genre;
+
+                                context.Books.AddOrUpdate(bookToAdd);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        private void AuthorSeed(BookStoreContext context)
+        {
+            if (context.Authors.Any())
+            {
+                using (StreamReader reader = new StreamReader(@"\..\..\..\BookStore.AppData\authors.json"))
+                {
+                    string json = reader.ReadToEnd();
+                    dynamic parsed = JObject.Parse(json);
+                    foreach (var wrappedAuthors in parsed)
+                    {
+                        foreach (var authors in wrappedAuthors)
+                        {
+                            foreach (var author in authors)
+                            {
+                                Author authorToAdd = new Author();
+                                authorToAdd.FullName = author.Fullname;
+
+                                foreach (string bookTitle in author.Books)
+                                {
+                                    Book book = context.Books
+                                        .FirstOrDefault(b => b.Title == bookTitle);
+
+                                    authorToAdd.Books.Add(book);
+                                }
+                                authorToAdd.Bio = author.Bio;
+
+                                context.Authors.AddOrUpdate(authorToAdd);
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }
