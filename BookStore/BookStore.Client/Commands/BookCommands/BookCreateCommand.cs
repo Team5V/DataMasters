@@ -1,24 +1,14 @@
-﻿using BookStore.Client.Commands;
-using BookStore.Core.Contracts;
-using BookStore.Database;
+﻿using BookStore.Database;
 using BookStore.Models;
-using BookStore.Models.Enums;
-using Bytes2you.Validation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace BookStore.Commands
+namespace BookStore.Client.Commands
 {
     public class BookCreateCommand : BaseCommand, ICommand
     {
-        private readonly IBookStoreFactory factory;
-        public BookCreateCommand(IBookStoreContext context, IBookStoreFactory factory)
-            : base(context)
-        {
-            Guard.WhenArgument(factory, "factory").IsNull().Throw();
-            this.factory = factory;
-        }
+        public BookCreateCommand(IBookStoreContext context) : base(context) { }
 
         // Syntax
         // bookcreate:title;language;pages;Author1,Author2,Author3;GenreType
@@ -31,7 +21,7 @@ namespace BookStore.Commands
             var authorNames = parameters[3].Split(',');
             var genre = (GenreType)Enum.Parse(typeof(GenreType), parameters[4]);
 
-            var book = this.factory.CreateBook(title, language, pages, genre); //NoAuthors add yet
+            var book = new Book();//this.factory.CreateBook(title, language, pages, genre); //NoAuthors add yet
 
             var result = "";
             //Book title Check

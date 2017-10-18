@@ -1,11 +1,10 @@
-﻿using BookStore.Client.Commands;
-using BookStore.Database;
+﻿using BookStore.Database;
 using Bytes2you.Validation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace BookStore.Commands
+namespace BookStore.Client.Commands
 {
     public class BookReadCommand : BaseCommand, ICommand
     {

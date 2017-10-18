@@ -1,6 +1,6 @@
 ﻿using BookStore.Database;
 
-namespace BookStore.Client.Core.Contracts
+namespace BookStore.Client.Core
 {
     public interface IPdfExporter
     {

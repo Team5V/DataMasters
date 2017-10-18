@@ -1,4 +1,4 @@
-﻿using BookStore.Core.Contracts;
+﻿using BookStore.Client.Core;
 using BookStore.DependencyInjection;
 using Ninject;
 

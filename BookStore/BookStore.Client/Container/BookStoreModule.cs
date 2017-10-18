@@ -1,12 +1,6 @@
-﻿using BookStore.Client;
-using BookStore.Client.Commands;
-using BookStore.Client.Core.Contracts;
-using BookStore.Client.Core.Converters;
-using BookStore.Commands;
+﻿using BookStore.Client.Commands;
+using BookStore.Client.Core;
 using BookStore.Core;
-using BookStore.Core.Contracts;
-using BookStore.Core.Factories;
-using BookStore.Core.Providers;
 using BookStore.Database;
 using Ninject.Modules;
 
@@ -24,7 +18,6 @@ namespace BookStore.DependencyInjection
             this.Bind<ICommandParser>().To<CommandParser>();
 
             this.Bind<IEngine>().To<Engine>().InSingletonScope().Named("Engine");
-            this.Bind<IBookStoreFactory>().To<BookStoreFactory>().InSingletonScope();
 
             //DataContext
             this.Bind<IBookStoreContext>().To<BookStoreContext>();

@@ -1,4 +1,4 @@
-﻿namespace BookStore.Core.Contracts
+﻿namespace BookStore.Client.Core
 {
     public interface IWriter
     {

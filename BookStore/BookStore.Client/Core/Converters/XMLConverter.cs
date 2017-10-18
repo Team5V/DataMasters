@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BookStore.Client.Core.Converters
+namespace BookStore.Client.Core
 {
     internal class XMLConverter
     {

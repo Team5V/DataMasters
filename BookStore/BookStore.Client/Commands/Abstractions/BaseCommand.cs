@@ -1,4 +1,4 @@
-﻿using BookStore.Commands;
+﻿using BookStore.Client.Utils;
 using BookStore.Database;
 using Bytes2you.Validation;
 using System.Collections.Generic;
@@ -7,16 +7,16 @@ namespace BookStore.Client.Commands
 {
     public abstract class BaseCommand : ICommand
     {
-        private IBookStoreContext context;
+        private readonly IBookStoreContext context;
 
         public BaseCommand(IBookStoreContext context)
         {
-            Guard.WhenArgument(context, "context").IsNull().Throw();
+            Guard.WhenArgument(context, Err.Context).IsNull().Throw();
             this.context = context;
         }
 
         public abstract string Execute(IList<string> parameters);
 
-        public IBookStoreContext Context { get { return this.context; } }
+        protected IBookStoreContext Context { get { return this.context; } }
     }
 }

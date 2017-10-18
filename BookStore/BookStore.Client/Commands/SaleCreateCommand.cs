@@ -1,12 +1,11 @@
-﻿using BookStore.Core.Contracts;
-using BookStore.Database;
+﻿using BookStore.Database;
 using System.Collections.Generic;
 
 namespace BookStore.Client.Commands
 {
-    public class SaleCreateCommand : BaseCommand
+    public class SaleCreateCommand : BaseCommand, ICommand
     {
-        public SaleCreateCommand(IBookStoreContext context, IBookStoreFactory factory) : base(context)
+        public SaleCreateCommand(IBookStoreContext context) : base(context)
         {
         }
 

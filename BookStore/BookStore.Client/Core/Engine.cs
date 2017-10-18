@@ -1,4 +1,4 @@
-﻿using BookStore.Core.Contracts;
+﻿using BookStore.Client.Core;
 using Bytes2you.Validation;
 using System;
 

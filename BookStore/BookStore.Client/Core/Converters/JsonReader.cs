@@ -1,5 +1,4 @@
 ﻿using BookStore.Client.Commands;
-using BookStore.Commands;
 using BookStore.Database;
 using BookStore.Models;
 using Newtonsoft.Json;
@@ -8,7 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 
-namespace BookStore.Client
+namespace BookStore.Client.Core
 {
     public class JsonReader : BaseCommand, ICommand
     {

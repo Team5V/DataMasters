@@ -1,11 +1,10 @@
-﻿using BookStore.Client.Commands;
-using BookStore.Database;
+﻿using BookStore.Database;
 using BookStore.Models;
 using Bytes2you.Validation;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace BookStore.Commands
+namespace BookStore.Client.Commands
 {
     public class BookDeleteCommand : BaseCommand, ICommand
     {
