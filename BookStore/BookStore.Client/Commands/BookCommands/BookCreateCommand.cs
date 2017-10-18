@@ -10,8 +10,8 @@ namespace BookStore.Client.Commands
 {
     public class BookCreateCommand : BaseCommand, ICommand
     {
-       
-        public BookCreateCommand(IBookStoreContext context) 
+
+        public BookCreateCommand(IBookStoreContext context)
             : base(context)
         {
         }
@@ -25,14 +25,10 @@ namespace BookStore.Client.Commands
             var title = parameters[0];
             if (Context.Books.Count() > 0)
             {
-<<<<<<< HEAD
                 if (this.Context.Books.Where(x => x.Title == title) != null) // ne raboti dobre na kogato nqma zapisi
                 {
                     return "Book already exist";
                 }
-=======
-                return "Book already exists ";
->>>>>>> 0ab72287fd08a4ba486fce56cc1225ea4f82b731
             }
             try
             {

@@ -1,11 +1,7 @@
-<<<<<<< HEAD
-﻿using BookStore.Data;
-=======
-﻿using BookStore.Client.Utils;
-using BookStore.Database;
->>>>>>> 0ab72287fd08a4ba486fce56cc1225ea4f82b731
+
+using BookStore.Client.Utils;
+using BookStore.Data;
 using Bytes2you.Validation;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 

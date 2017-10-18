@@ -8,7 +8,7 @@ namespace BookStore.Client.Commands
 {
     public class SaleCreateCommand : BaseCommand, ICommand
     {
-        public SaleCreateCommand(IBookStoreContext context) 
+        public SaleCreateCommand(IBookStoreContext context)
             : base(context)
         {
         }
@@ -19,16 +19,10 @@ namespace BookStore.Client.Commands
             Guard.WhenArgument(parameters.Count, ErrorMessage.Less).IsNotEqual(1).Throw();
 
             var offerIds = parameters[0].Split(',').Select(x => int.Parse(x));
-<<<<<<< HEAD
-           
 
-
-
-=======
             var validOffers = this.Context.Offers.Where(x => x.Book_Id.Equals(offerIds.Any()));
             var validOffers2 = this.Context.Offers.Where(x => offerIds.Contains(x.Book_Id));
-            
->>>>>>> 0ab72287fd08a4ba486fce56cc1225ea4f82b731
+
             //this.Context.Sales.Add(sale);
             //this.Context.SaveChanges();
             return "Sale conducted";
