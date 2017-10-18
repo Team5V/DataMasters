@@ -1,4 +1,5 @@
 ﻿using BookStore.Client.Commands;
+using BookStore.Commands;
 using BookStore.Database;
 using BookStore.Models;
 using Newtonsoft.Json;
@@ -7,11 +8,11 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 
-namespace BookStore.Client.Core
+namespace BookStore.Client
 {
     public class JsonReader : BaseCommand, ICommand
     {
-        public JsonReader(IBookStoreContext context)
+        public JsonReader(IBookStoreContext context) 
             : base(context)
         {
         }
@@ -22,7 +23,7 @@ namespace BookStore.Client.Core
             using (StreamReader reader = new StreamReader(path))
             {
                 string json = reader.ReadToEnd();
-
+                
                 List<Book> books = JsonConvert.DeserializeObject<List<Book>>(json);
                 foreach (var book in books)
                 {

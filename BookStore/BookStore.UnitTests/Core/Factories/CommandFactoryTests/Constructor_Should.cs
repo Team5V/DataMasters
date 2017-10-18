@@ -1,4 +1,4 @@
-﻿using BookStore.Client.Core;
+﻿using BookStore.Core.Factories;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Ninject;

@@ -1,7 +1,8 @@
-﻿using Bytes2you.Validation;
+﻿using BookStore.Core.Contracts;
+using Bytes2you.Validation;
 using System;
 
-namespace BookStore.Client.Core
+namespace BookStore.Core
 {
     public class Engine : IEngine
     {

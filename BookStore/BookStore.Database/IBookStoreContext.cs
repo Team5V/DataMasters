@@ -5,13 +5,9 @@ namespace BookStore.Database
 {
     public interface IBookStoreContext
     {
-        IDbSet<Book> Books { get; }
+        IDbSet<Book> Books { get; set; }
 
-        IDbSet<Author> Authors { get; }
-
-        IDbSet<BookOffer> BookOffers { get; }
-
-        IDbSet<Sale> Sales { get; }
+        IDbSet<Author> Authors { get; set; }
 
         int SaveChanges();
     }

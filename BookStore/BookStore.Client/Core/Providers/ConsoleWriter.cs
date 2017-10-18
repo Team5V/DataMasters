@@ -1,6 +1,7 @@
-﻿using System;
+﻿using BookStore.Core.Contracts;
+using System;
 
-namespace BookStore.Client.Core
+namespace BookStore.Core.Providers
 {
     public class ConsoleWriter : IWriter
     {

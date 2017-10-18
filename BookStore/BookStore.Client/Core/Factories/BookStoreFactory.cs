@@ -1,38 +1,31 @@
-﻿using BookStore.Client.Utils;
+﻿using BookStore.Core.Contracts;
 using BookStore.Models;
-using Bytes2you.Validation;
-using System.Collections.Generic;
+using BookStore.Models.Enums;
 
-namespace BookStore.Client.Core
+namespace BookStore.Core.Factories
 {
     public class BookStoreFactory : IBookStoreFactory
     {
-        public Book CreateBook(string title, string language, int pages, SortedSet<Author> authors, GenreType genreType)
+        public Book CreateBook(string title, string language, int pages, GenreType genreType)
         {
-            Guard.WhenArgument(title, Msg.ErrParams).IsNullOrEmpty().Throw();
-            Guard.WhenArgument(title.Length, Msg.ErrParams).IsLessThan(2).IsGreaterThan(50).Throw();
-            Guard.WhenArgument(language, Msg.ErrParams).IsNullOrWhiteSpace().Throw();
-            Guard.WhenArgument(language.Length, Msg.ErrParams).IsNotEqual(2).Throw();
-            Guard.WhenArgument(pages, Msg.ErrParams).IsLessThan(1).IsGreaterThan(2048).Throw();
+            // Ask if this will happen automagically when the book is created with new parameters 
 
-            var book = new Book(); //Important to create the obj like that don`t use the short syntax pls
-            book.Title = title;
-            book.Language = language;
-            book.Pages = pages;
-            book.Authors = authors;
-            book.Genre = genreType;
+            /// this is not unit testable!!!!
 
-            return book;
-        }
+            //if (title == null || title.Length < 2 || title.Length > 50)
+            //{
+            //    throw new ArgumentOutOfRangeException("Invalid title");
+            //}
+            //if (language == null || language.Length != 2)
+            //{
+            //    throw new ArgumentOutOfRangeException("Invalid language");
+            //}
+            //if (pages == 0 || pages < 1 || pages > 2000)
+            //{
+            //    throw new ArgumentOutOfRangeException("Invalid pages");
+            //}
 
-        public BookOffer CreateOffer(int book_id, decimal price, int copies)
-        {
-            return new BookOffer();
-        }
-
-        public Sale CreateSale()
-        {
-            return new Sale();
+            return new Book{ Title = title, Language = language, Pages = pages, Genre = genreType };
         }
     }
 }

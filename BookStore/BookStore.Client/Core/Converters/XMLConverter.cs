@@ -1,30 +1,12 @@
-﻿using BookStore.Models;
-using System.Collections.Generic;
-using System.Xml;
+﻿using System;
 
-namespace BookStore.Client.Core
+namespace BookStore.Client.Core.Converters
 {
-    public class XmlParser
+    internal class XMLConverter
     {
-        public List<Author> ReadFromFile(string fileUrl, string nodeUrl)
+        public string ReadLine()
         {
-            var xmlDoc = new XmlDocument();
-            xmlDoc.Load(fileUrl);
-            var nodeList = xmlDoc.DocumentElement.SelectNodes(nodeUrl);
-
-            var authors = new List<Author>();
-
-            foreach (XmlNode node in nodeList)
-            {
-                var author = new Author
-                {
-                    FullName = node.SelectSingleNode("fullName").InnerText,
-                    Bio = node.SelectSingleNode("bio").InnerText
-                };
-                authors.Add(author);
-            }
-
-            return authors;
+            throw new NotImplementedException();
         }
     }
 }

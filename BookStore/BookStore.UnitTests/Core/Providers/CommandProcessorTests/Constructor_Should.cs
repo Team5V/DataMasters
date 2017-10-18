@@ -1,4 +1,5 @@
-﻿using BookStore.Client.Core;
+﻿using BookStore.Core.Contracts;
+using BookStore.Core.Providers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System;
@@ -27,5 +28,5 @@ namespace BookStore.UnitTests.Core.Providers.CommandProcessorTests
             Assert.ThrowsException<ArgumentNullException>(() => new CommandProcessor(null));
         }
     }
-
+    
 }

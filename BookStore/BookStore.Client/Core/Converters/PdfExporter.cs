@@ -1,11 +1,12 @@
-﻿using BookStore.Database;
+﻿using BookStore.Client.Core.Contracts;
+using BookStore.Database;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using System.Collections;
 using System.IO;
 using System.Linq;
 
-namespace BookStore.Client.Core
+namespace BookStore.Client.Core.Converters
 {
     public class PdfExporter : IPdfExporter
     {

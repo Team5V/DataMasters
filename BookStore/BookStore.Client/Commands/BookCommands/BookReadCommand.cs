@@ -1,28 +1,42 @@
-﻿using BookStore.Client.Utils;
+﻿using BookStore.Client.Commands;
 using BookStore.Database;
 using Bytes2you.Validation;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
-namespace BookStore.Client.Commands
+namespace BookStore.Commands
 {
     public class BookReadCommand : BaseCommand, ICommand
     {
-        public BookReadCommand(IBookStoreContext context) : base(context) { }
+        public BookReadCommand(IBookStoreContext context)
+            : base(context)
+        {
+        }
 
-        //syntax bookread:id;
         public override string Execute(IList<string> parameters)
         {
-            Guard.WhenArgument(parameters, Msg.ErrParams).IsNullOrEmpty().Throw();
+            Guard.WhenArgument(parameters, "parameters").IsNullOrEmpty().Throw();
 
-            int.TryParse(parameters[0], out int id);
+            var bookTitle = parameters[0];
 
-            var book = this.GetBook(id);
-
-            return $"Title: {book.Title}, \n"
-                   + $"Pages: {book.Pages}, \n"
-                   + $"Language: {book.Language}, \n"
-                   + $"Genre: {book.Genre}, \n"
-                   + $"Authors: {string.Join(", ", book.Authors)}";
+            string result = string.Empty;
+            // See if there is better exception handling
+            try
+            {
+                var readBook = Context.Books.FirstOrDefault(t => t.Title == bookTitle);
+                result = "Book Title: " + readBook.Title + ", \n"
+                        + "Pages: "+ readBook.Pages + ", \n"
+                        + "Language: " + readBook.Language + ", \n"
+                        + "Genre: " + readBook.Genre + ", \n"
+                        + "Authors: " + string.Join(", ", readBook.Authors);
+            }
+            catch (Exception)
+            {
+                throw new ContextMarshalException();
+            }
+            
+            return result;
         }
     }
 }

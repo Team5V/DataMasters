@@ -1,4 +1,5 @@
-﻿using BookStore.Client.Core;
+﻿using BookStore.Core.Factories;
+using BookStore.Core.Providers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System.Collections.Generic;

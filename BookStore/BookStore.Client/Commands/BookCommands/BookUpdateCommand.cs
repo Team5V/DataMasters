@@ -1,28 +1,36 @@
-﻿using BookStore.Client.Utils;
+﻿using BookStore.Client.Commands;
 using BookStore.Database;
 using BookStore.Models;
+using BookStore.Models.Enums;
 using Bytes2you.Validation;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
-namespace BookStore.Client.Commands
+namespace BookStore.Commands
 {
     public class BookUpdateCommand : BaseCommand, ICommand
     {
-        public BookUpdateCommand(IBookStoreContext context) : base(context) { }
-
-        //syntax bookupdate:id;property;newValue
+        public BookUpdateCommand(IBookStoreContext context)
+            : base(context)
+        {
+        }
+        //syntax bookupdate:id;property;newValue;
+        //Title Language Pages Genre Authors
         public override string Execute(IList<string> parameters)
         {
-            Guard.WhenArgument(parameters, Msg.ErrParams).IsNullOrEmpty().Throw();
-            Guard.WhenArgument(parameters.Count, Msg.ErrLess).IsLessThan(3).Throw();
-
-            var book = this.GetBook(int.Parse(parameters[0]));
-
-            var property = parameters[1];
+            Guard.WhenArgument(parameters, "Need an Id").IsNullOrEmpty().Throw();
+            var id = int.Parse(parameters[0]);
+            var prop = parameters[1];
             var newValue = parameters[2];
 
-            switch (property)
+            var book = this.Context.Books.Find(id);
+            if (book == null)
+            {
+                return "No book with that Id.";
+            }
+
+            switch (prop)
             {
                 case "title":
                     book.Title = newValue;
@@ -38,14 +46,26 @@ namespace BookStore.Client.Commands
                     break;
                 case "authors":
                     var authors = newValue.Split(',');
-                    book.Authors = this.ResolveAuthors(authors);
+                    foreach (var author in authors)
+                    {
+                        var holder = Context.Authors.FirstOrDefault(x => x.FullName == author);
+                        if (holder.FullName == string.Empty)
+                        {
+                            book.Authors.Add(new Author { FullName = author });
+                        }
+                        else
+                        {
+                            book.Authors.Add(holder);
+                        }
+                    }
                     break;
                 default:
-                    return Msg.ErrProp;
+                    throw new ArgumentException("Invalid property.");
             }
 
             this.Context.SaveChanges();
-            return Msg.Change;
+
+            return $"Changed {book.Title}'s {prop} to {newValue}";
         }
     }
 }

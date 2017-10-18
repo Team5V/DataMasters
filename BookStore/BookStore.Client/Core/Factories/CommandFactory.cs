@@ -1,8 +1,8 @@
-﻿using BookStore.Client.Commands;
+﻿using BookStore.Commands;
 using Bytes2you.Validation;
 using Ninject;
 
-namespace BookStore.Client.Core
+namespace BookStore.Core.Factories
 {
     public class CommandFactory : ICommandFactory
     {

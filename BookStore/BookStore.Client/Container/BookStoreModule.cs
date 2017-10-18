@@ -1,9 +1,16 @@
-﻿using BookStore.Client.Commands;
-using BookStore.Client.Core;
+﻿using BookStore.Client;
+using BookStore.Client.Commands;
+using BookStore.Client.Core.Contracts;
+using BookStore.Client.Core.Converters;
+using BookStore.Commands;
+using BookStore.Core;
+using BookStore.Core.Contracts;
+using BookStore.Core.Factories;
+using BookStore.Core.Providers;
 using BookStore.Database;
 using Ninject.Modules;
 
-namespace BookStore.Client.Container
+namespace BookStore.DependencyInjection
 {
     public class BookStoreModule : NinjectModule
     {
@@ -11,12 +18,12 @@ namespace BookStore.Client.Container
         {
             this.Bind<ICommandFactory>().To<CommandFactory>().InSingletonScope();
 
-            this.Bind<IReader>().To<ConsoleReader>().InSingletonScope();
-            this.Bind<IWriter>().To<ConsoleWriter>().InSingletonScope();
-            this.Bind<ICommandProcessor>().To<CommandProcessor>().InSingletonScope();
-            this.Bind<ICommandParser>().To<CommandParser>().InSingletonScope();
+            this.Bind<IReader>().To<ConsoleReader>();
+            this.Bind<IWriter>().To<ConsoleWriter>();
+            this.Bind<ICommandProcessor>().To<CommandProcessor>();
+            this.Bind<ICommandParser>().To<CommandParser>();
 
-            this.Bind<IEngine>().To<Engine>().InSingletonScope();
+            this.Bind<IEngine>().To<Engine>().InSingletonScope().Named("Engine");
             this.Bind<IBookStoreFactory>().To<BookStoreFactory>().InSingletonScope();
 
             //DataContext
@@ -26,19 +33,18 @@ namespace BookStore.Client.Container
             this.Bind<ICommand>().To<BookDeleteCommand>().Named("bookdelete");
             this.Bind<ICommand>().To<BookUpdateCommand>().Named("bookupdate");
             this.Bind<ICommand>().To<BookReadCommand>().Named("bookread");
-            //BookOffer commands
-            this.Bind<ICommand>().To<BookOfferCreateCommand>().Named("offercreate");
-            this.Bind<ICommand>().To<BookOfferDeleteCommand>().Named("offerdelete");
-            this.Bind<ICommand>().To<BookOfferUpdateCommand>().Named("offerupdate");
-            this.Bind<ICommand>().To<BookOfferReadCommand>().Named("offerread");
+            //Offer commands
+            this.Bind<ICommand>().To<OfferCreateCommand>().Named("offercreate");
+            this.Bind<ICommand>().To<OfferDeleteCommand>().Named("offerdelete");
+            this.Bind<ICommand>().To<OfferUpdateCommand>().Named("offerupdate");
             //report commands
             this.Bind<ICommand>().To<ReportGenerateCommand>().Named("reportgenerate");
             //sale commands
-            this.Bind<ICommand>().To<SaleCreateCommand>().Named("salecreate");
-
-            //?? Icommand
-            this.Bind<ICommand>().To<JsonReader>();
+            this.Bind<ICommand>().To<SaleCreateCommand>().Named("saleconduct");
+            this.Bind<ICommand>().To<JsonReader>().Named("jsonreader");
             this.Bind<IPdfExporter>().To<PdfExporter>();
+
+           
         }
     }
 }

@@ -1,6 +1,6 @@
-﻿using BookStore.Client.Commands;
+﻿using BookStore.Commands;
 
-namespace BookStore.Client.Core
+namespace BookStore.Core.Factories
 {
     public interface ICommandFactory
     {

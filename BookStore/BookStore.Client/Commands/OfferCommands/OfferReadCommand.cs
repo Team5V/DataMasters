@@ -1,12 +1,13 @@
-﻿using BookStore.Database;
+﻿using BookStore.Commands;
+using BookStore.Database;
 using System;
 using System.Collections.Generic;
 
-namespace BookStore.Client.Commands
+namespace BookStore.Client.Commands.OfferCommands
 {
-    public class BookOfferReadCommand : BaseCommand, ICommand
+    public class OfferReadCommand : BaseCommand, ICommand
     {
-        public BookOfferReadCommand(IBookStoreContext context) 
+        public OfferReadCommand(IBookStoreContext context) 
             : base(context)
         {
         }

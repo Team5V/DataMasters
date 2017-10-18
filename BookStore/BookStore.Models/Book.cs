@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using BookStore.Models.Enums;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace BookStore.Models
@@ -18,12 +19,13 @@ namespace BookStore.Models
             ErrorMessage = "The Title's length cannot be less than 2 or more than 50 symbols long.")]
         public string Title { get; set; }
 
+        //BG, EN toUpper
         [Required]
         [StringLength(2, MinimumLength = 2, ErrorMessage = "The Language's length is exact 2 symbols.")]
         public string Language { get; set; }
 
         [Required]
-        [Range(minimum: 1, maximum: 2048, ErrorMessage = "The Page`s count range form 1 to 2048.")]
+        [Range(minimum: 1, maximum: 2000)]
         public int Pages { get; set; }
 
         [Required]
@@ -32,5 +34,6 @@ namespace BookStore.Models
         [Required]
         [EnumDataType(typeof(GenreType))]
         public GenreType Genre { get; set; }
+
     }
 }

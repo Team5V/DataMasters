@@ -1,11 +1,11 @@
-﻿using BookStore.Client.Core;
+﻿using BookStore.Client.Core.Contracts;
 using BookStore.Database;
 using Bytes2you.Validation;
 using System.Collections.Generic;
 
 namespace BookStore.Client.Commands
 {
-    public class ReportGenerateCommand : BaseCommand, ICommand
+    public class ReportGenerateCommand : BaseCommand
     {
         private readonly IPdfExporter exporter;
 

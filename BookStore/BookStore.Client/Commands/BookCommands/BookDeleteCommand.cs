@@ -1,27 +1,33 @@
-﻿using BookStore.Client.Utils;
+﻿using BookStore.Client.Commands;
 using BookStore.Database;
 using BookStore.Models;
 using Bytes2you.Validation;
 using System.Collections.Generic;
+using System.Linq;
 
-namespace BookStore.Client.Commands
+namespace BookStore.Commands
 {
     public class BookDeleteCommand : BaseCommand, ICommand
     {
-        public BookDeleteCommand(IBookStoreContext context) : base(context) { }
+        public BookDeleteCommand(IBookStoreContext context)
+            : base(context)
+        {
+        }
 
-        //bookdelete:id;
         public override string Execute(IList<string> parameters)
         {
-            Guard.WhenArgument(parameters, Msg.ErrParams).IsNullOrEmpty().Throw();
+            Guard.WhenArgument(parameters,
+                "Invalid command parameters\n 1. Make sure you have selected a book title e.g.\n deletebook HumptyDumpty")
+                .IsNullOrEmpty().Throw();
 
-            int.TryParse(parameters[0], out int id);
+            var bookTitle = parameters[0];
 
-            Book book = this.GetBook(id);
-
+            Book book = Context.Books.FirstOrDefault(b => b.Title == bookTitle);
+            //check for existence
             Context.Books.Remove(book);
             Context.SaveChanges();
-            return Msg.Delete;
+
+            return $"Deleted {book.Title} from Library";
         }
     }
 }

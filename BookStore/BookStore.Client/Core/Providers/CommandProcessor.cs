@@ -1,6 +1,7 @@
-﻿using Bytes2you.Validation;
+﻿using BookStore.Core.Contracts;
+using Bytes2you.Validation;
 
-namespace BookStore.Client.Core
+namespace BookStore.Core.Providers
 {
     public class CommandProcessor : ICommandProcessor
     {

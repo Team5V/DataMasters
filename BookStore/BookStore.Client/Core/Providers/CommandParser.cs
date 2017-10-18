@@ -1,10 +1,12 @@
-﻿using BookStore.Client.Commands;
+﻿using BookStore.Commands;
+using BookStore.Core.Contracts;
+using BookStore.Core.Factories;
 using Bytes2you.Validation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace BookStore.Client.Core
+namespace BookStore.Core.Providers
 {
     public class CommandParser : ICommandParser
     {
