@@ -1,0 +1,117 @@
+{
+    "authors": [
+        {
+            "FullName": "Marijn Haverbeker",
+            "Books": [
+                "Eloquent JavaScript, Second Edition",
+                "Eloquent JavaScript, Third Edition"
+            ],
+            "Bio": "Marijn Haverbeke is a programming language enthusiast and polyglot. He's worked his way from trivial BASIC games on the Commodore, through a C++ phase, to the present where he mostly hacks on database systems and web APIs in dynamic languages. "
+        },
+        {
+            "FullName": "Petar Vladikov",
+            "Books": [
+                "Eloquent JavaScript, Second Edition",
+                "Eloquent JavaScript, Third Edition",
+                "United Manscapers"
+            ],
+            "Bio": "A inspiring new author"
+        },
+        {
+            "FullName": "Addy Osmani",
+            "Books": [
+                "Learning JavaScript Design Patterns"
+            ],
+            "Bio": "Losho mi e"
+        },
+            
+        {
+            "FullName": "Ali Raza",
+            "Books": [
+                "Learning JavaScript Design Patterns",
+                "Lie,lye,lay... oh whatever just a Turkish paradigm"
+            ],
+            "Bio": "Podai aspirina tam"
+        },
+        {
+            "FullName": "Axel Rauschmayer",
+            "Books": [
+                "Speaking JavaScript"
+            ],
+            "Bio": "Axel specializes in JavaScript and web development. He has been developing web applications since 1995. In 1999, he was technical manager at a German Internet startup that later expanded internationally."
+        },
+        {
+            "FullName": "Aishe Bremennova",
+            "Books": [
+                "Speaking JavaScript"
+            ],
+            "Bio": "A mother of dragons... 16 dragons in 7 years"
+        },
+        {
+            "FullName": "Eric Elliott",
+            "Books": [
+                "Programming JavaScript Applications",
+                "How to be a human being in two easy steps"
+            ],
+            "Bio": "Compassionate entrepreneur on a mission to end homelessness."
+        },
+        {
+            "FullName": "Uti Bachvarov",
+            "Books": [
+                "Programming JavaScript Applications"
+            ],
+            "Bio": "Born to be a cook, was a cook, now he only cooks code on high heat"
+        },
+        {
+            "FullName": "Nicholas C. Zakas",
+            "Books": [
+                "Understanding ECMAScript 6"
+            ],
+            "Bio": "The personal web site of front end engineer, book author, and speaker "
+        },
+        {
+            "FullName": "Georgi Manchev",
+            "Books": [
+                "Understanding ECMAScript 6",
+                "Touched by God"
+            ],
+            "Bio": "God has given this man a cookie and the cookie was full of sensitive god information. Upon making the projects with the colleagues Chef Manchev chopped their knowledge to pieces and rebilt it once anew - perfectly - as if god himself had explained it... like 7 times."
+        },
+        {
+            "FullName": "Kyle Simpson",
+            "Books": [
+                "You Don't Know JS"
+            ],
+            "Bio": "Kyle Simpson is an evangelist of the open web. He's passionate about all things JavaScript, writes books, teaches JavaScript, speaks, and contributes to the world of OSS"
+        },
+        {
+            "FullName": "Sumnambul Ismailov",
+            "Books": [
+                "You Don't Know JS",
+                "How to walk, while you are sleeping 7th Edition"
+            ],
+            "Bio": "Doesn't sleep, doesn't eat, doesn't sweat, but he is sweet HEeeeee's Sumnio."
+        },
+        {
+            "FullName": "Richard E. Silverman",
+            "Books": [
+                "Git Pocket Guide"
+            ],
+            "Bio": "Richard Silverman first touched a computer as a college junior in 1986, when he logged into a DEC-20, typed MM to send some mail, and was promptly lost to the world. He eventually resurfaced and discovered he had a career, which was convenient but somewhat disorienting, since he hadn't really been looking for one."
+        },
+        {
+            "FullName": "Glenn Block, et al.",
+            "Books": [
+                "Designing Evolvable Web APIs with ASP.NET"
+            ],
+            "Bio": "Glenn Block is a currently working on the Azure team at Microsoft. He was previously a PM on the WCF team working on Microsoft’s future HTTP and REST stack as well as a PM on the new Managed Extensibility Framework in .NET 4.0. "
+        },
+        {
+            "FullName": "S. Vazelin",
+            "Books": [
+                "Designing Evolvable Web APIs with ASP.NET"
+            ],
+            "Bio": "Bez Vazelin"
+        }
+    ]
+}
