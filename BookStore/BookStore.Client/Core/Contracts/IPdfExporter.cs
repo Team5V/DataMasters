@@ -1,4 +1,4 @@
-﻿using BookStore.Database;
+﻿using BookStore.Data;
 
 namespace BookStore.Client.Core
 {

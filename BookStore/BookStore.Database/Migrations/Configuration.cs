@@ -1,16 +1,20 @@
 namespace BookStore.Data.Migrations
 {
+    using System;
+    using System.Data.Entity;
     using System.Data.Entity.Migrations;
+    using System.Linq;
 
-    public sealed class Configuration : DbMigrationsConfiguration<BookStoreSystemContext>
+    public sealed class Configuration : DbMigrationsConfiguration<BookStore.Data.BookStoreContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
             AutomaticMigrationDataLossAllowed = false;
+            ContextKey = "BookStore.Database.BookStoreContext";
         }
 
-        protected override void Seed(BookStoreSystemContext context)
+        protected override void Seed(BookStore.Data.BookStoreContext context)
         {
             //  This method will be called after migrating to the latest version.
 

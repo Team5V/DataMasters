@@ -1,5 +1,5 @@
 ﻿using BookStore.Client.Utils;
-using BookStore.Database;
+using BookStore.Data;
 using Bytes2you.Validation;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,8 +16,7 @@ namespace BookStore.Client.Commands
             Guard.WhenArgument(parameters.Count, Err.Less).IsNotEqual(1).Throw();
 
             var offerIds = parameters[0].Split(',').Select(x => int.Parse(x));
-            var validOffers = this.Context.Offers.Where(x => x.Book_Id.Equals(offerIds.Any()));
-            var validOffers2 = this.Context.Offers.Where(x => offerIds.Contains(x.Book_Id));
+           
 
 
 

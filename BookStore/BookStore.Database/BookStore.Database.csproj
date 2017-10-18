@@ -56,6 +56,19 @@
   <ItemGroup>
     <Compile Include="BookStoreContext.cs" />
     <Compile Include="IBookStoreContext.cs" />
+    <Compile Include="Migrations\201710171213357_InitialCreate.cs" />
+    <Compile Include="Migrations\201710171213357_InitialCreate.Designer.cs">
+      <DependentUpon>201710171213357_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710181429477_added Offer.cs" />
+    <Compile Include="Migrations\201710181429477_added Offer.Designer.cs">
+      <DependentUpon>201710181429477_added Offer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710181435353_added Sale.cs" />
+    <Compile Include="Migrations\201710181435353_added Sale.Designer.cs">
+      <DependentUpon>201710181435353_added Sale.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -67,6 +80,17 @@
       <Project>{f530112d-d44b-45f9-8bb1-b1ef288173c7}</Project>
       <Name>BookStore.Models</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201710171213357_InitialCreate.resx">
+      <DependentUpon>201710171213357_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710181429477_added Offer.resx">
+      <DependentUpon>201710181429477_added Offer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710181435353_added Sale.resx">
+      <DependentUpon>201710181435353_added Sale.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

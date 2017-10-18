@@ -1,5 +1,5 @@
 ﻿using BookStore.Client.Utils;
-using BookStore.Database;
+using BookStore.Data;
 using Bytes2you.Validation;
 using System.Collections.Generic;
 
@@ -16,9 +16,9 @@ namespace BookStore.Client.Commands
 
             int.TryParse(parameters[0], out int id);
 
-            //var offer = this.GetOffer(id);
+            var offer = Context.GetOffer(id);
 
-            //this.Context.Offers.Remove(offer);
+            this.Context.Offers.Remove(offer);
             this.Context.SaveChanges();
 
             return "offer deleted";

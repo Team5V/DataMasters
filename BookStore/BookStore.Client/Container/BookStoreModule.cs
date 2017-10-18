@@ -1,7 +1,7 @@
 ﻿using BookStore.Client.Commands;
 using BookStore.Client.Core;
 using BookStore.Core;
-using BookStore.Database;
+using BookStore.Data;
 using Ninject.Modules;
 
 namespace BookStore.DependencyInjection

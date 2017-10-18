@@ -1,5 +1,5 @@
 ﻿using BookStore.Client.Utils;
-using BookStore.Database;
+using BookStore.Data;
 using BookStore.Models;
 using Bytes2you.Validation;
 using System;
@@ -19,11 +19,13 @@ namespace BookStore.Client.Commands
             Guard.WhenArgument(parameters.Count, Err.Less).IsLessThan(5).Throw();
 
             var title = parameters[0];
-            if (this.Context.Books.Where(x => x.Title == title) != null) // ne raboti dobre na kogato nqma zapisi
+            if (Context.Books.Count() > 0)
             {
-                return "Book already exist";
+                if (this.Context.Books.Where(x => x.Title == title) != null) // ne raboti dobre na kogato nqma zapisi
+                {
+                    return "Book already exist";
+                }
             }
-
             try
             {
                 var language = parameters[1];
@@ -32,7 +34,7 @@ namespace BookStore.Client.Commands
                 var genre = (GenreType)Enum.Parse(typeof(GenreType), parameters[4]);
                 var book = new Book { Title = title, Language = language, Pages = pages, Genre = genre };
 
-                book.Authors = this.Context.ResolveAuthors(authorNames);
+                //book.Authors = this.Context.ResolveAuthors(authorNames);
 
                 this.Context.Books.Add(book);
                 this.Context.SaveChanges();

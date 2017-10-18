@@ -1,5 +1,5 @@
 ﻿using BookStore.Client.Utils;
-using BookStore.Database;
+using BookStore.Data;
 using BookStore.Models;
 using Bytes2you.Validation;
 using System.Collections.Generic;
@@ -33,7 +33,7 @@ namespace BookStore.Client.Commands
             int.TryParse(parameters[0], out int copies);
             var offer = new Offer();
 
-            // this.Context.Offers.Add(offer);
+            this.Context.Offers.Add(offer);
             this.Context.SaveChanges();
 
             return "Created offer";

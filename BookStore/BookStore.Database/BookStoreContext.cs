@@ -1,7 +1,7 @@
 ﻿using BookStore.Models;
 using System.Data.Entity;
 
-namespace BookStore.Database
+namespace BookStore.Data
 {
     public class BookStoreContext : DbContext, IBookStoreContext
     {
