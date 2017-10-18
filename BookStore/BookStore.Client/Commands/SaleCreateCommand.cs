@@ -20,8 +20,8 @@ namespace BookStore.Client.Commands
 
             var offerIds = parameters[0].Split(',').Select(x => int.Parse(x));
 
-            var validOffers = this.Context.Offers.Where(x => x.Book_Id.Equals(offerIds.Any()));
-            var validOffers2 = this.Context.Offers.Where(x => offerIds.Contains(x.Book_Id));
+            var validOffers = this.Context.Offers.Where(x => x.BookId.Equals(offerIds.Any()));
+            var validOffers2 = this.Context.Offers.Where(x => offerIds.Contains(x.BookId));
 
             //this.Context.Sales.Add(sale);
             //this.Context.SaveChanges();

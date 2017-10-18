@@ -13,9 +13,8 @@ namespace BookStore.Models
 
         [Key]
         public int Id { get; set; }
-
-        [Required]
-        [StringLength(20, MinimumLength = 5,
+        
+        [Required, StringLength(20, MinimumLength = 5,
             ErrorMessage = "Author.FullName's length cannot be less than 5 or more than 20 symbols long.")]
         public string FullName { get; set; }
 
