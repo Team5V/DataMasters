@@ -10,18 +10,22 @@ namespace BookStore.Client.Commands
 {
     public class BookCreateCommand : BaseCommand, ICommand
     {
-        public BookCreateCommand(IBookStoreContext context) : base(context) { }
+       
+        public BookCreateCommand(IBookStoreContext context) 
+            : base(context)
+        {
+        }
 
         // bookcreate:title;language;pages;Author1,Author2,Author3;GenreType
         public override string Execute(IList<string> parameters)
         {
-            Guard.WhenArgument(parameters, Err.Params).IsNullOrEmpty().Throw();
-            Guard.WhenArgument(parameters.Count, Err.Less).IsLessThan(5).Throw();
+            Guard.WhenArgument(parameters, ErrorMessage.Params).IsNullOrEmpty().Throw();
+            Guard.WhenArgument(parameters.Count, "Parameters are less than five").IsLessThan(5).Throw();
 
             var title = parameters[0];
             if (this.Context.Books.Where(x => x.Title == title) != null) // ne raboti dobre na kogato nqma zapisi
             {
-                return "Book already exist";
+                return "Book already exists ";
             }
 
             try
@@ -30,7 +34,13 @@ namespace BookStore.Client.Commands
                 var pages = int.Parse(parameters[2]);
                 var authorNames = parameters[3].Split(',');
                 var genre = (GenreType)Enum.Parse(typeof(GenreType), parameters[4]);
-                var book = new Book { Title = title, Language = language, Pages = pages, Genre = genre };
+                var book = new Book
+                {
+                    Title = title,
+                    Language = language,
+                    Pages = pages,
+                    Genre = genre
+                };
 
                 book.Authors = this.Context.ResolveAuthors(authorNames);
 

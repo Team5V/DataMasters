@@ -12,7 +12,6 @@ namespace BookStore.Client.Commands
         public ReportGenerateCommand(IBookStoreContext context, IPdfExporter exporter)
             : base(context)
         {
-            Guard.WhenArgument(context, "No database loaded.").IsNull().Throw();
             Guard.WhenArgument(exporter, "Exporter cannot be null").IsNull().Throw();
             this.exporter = exporter;
         }
