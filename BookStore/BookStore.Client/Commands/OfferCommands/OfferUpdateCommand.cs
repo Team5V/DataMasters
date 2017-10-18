@@ -8,19 +8,22 @@ namespace BookStore.Client.Commands
 {
     public class OfferUpdateCommand : BaseCommand, ICommand
     {
-        public OfferUpdateCommand(IBookStoreContext context) : base(context) { }
+        public OfferUpdateCommand(IBookStoreContext context) 
+            : base(context)
+        {
+        }
 
         //offerupdate:id;prop;value
         public override string Execute(IList<string> parameters)
         {
-            Guard.WhenArgument(parameters, Err.Params).IsNullOrEmpty().Throw();
-            Guard.WhenArgument(parameters.Count, Err.Less).IsLessThan(3).Throw();
+            Guard.WhenArgument(parameters, ErrorMessage.Params).IsNullOrEmpty().Throw();
+            Guard.WhenArgument(parameters.Count, "Parameters need to be at least three").IsLessThan(3).Throw();
 
             int.TryParse(parameters[0], out int id);
             var offer = new Offer();//this.GetOffer(id);
             if (offer == null)
             {
-                return Err.NoID;
+                return ErrorMessage.NoID;
             }
 
             var prop = parameters[1].ToLower();
@@ -33,7 +36,7 @@ namespace BookStore.Client.Commands
                     offer.Copies = int.Parse(parameters[1]);
                     break;
                 default:
-                    return Err.Prop;
+                    return ErrorMessage.Prop;
             }
 
             this.Context.SaveChanges();

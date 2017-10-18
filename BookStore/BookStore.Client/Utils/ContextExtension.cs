@@ -11,20 +11,20 @@ namespace BookStore.Client.Utils
         public static Book GetBook(this IBookStoreContext context, int id)
         {
             var book = context.Books.Find(id);
-            Guard.WhenArgument(book, Err.NoID).IsNull().Throw();
+            Guard.WhenArgument(book, ErrorMessage.NoID).IsNull().Throw();
             return book;
         }
-
+        
         public static Offer GetOffer(this IBookStoreContext context, int id)
         {
             var offer = context.Offers.Find(id);
-            Guard.WhenArgument(offer, Err.NoID).IsNull().Throw();
+            Guard.WhenArgument(offer, ErrorMessage.NoID).IsNull().Throw();
             return offer;
         }
 
         public static HashSet<Author> ResolveAuthors(this IBookStoreContext context, IEnumerable<string> names)
         {
-            Guard.WhenArgument(names, Err.Params).IsNull().Throw();
+            Guard.WhenArgument(names, ErrorMessage.Params).IsNull().Throw();
 
             var result = new HashSet<Author>();
             foreach (var authorName in names)

@@ -11,7 +11,7 @@ namespace BookStore.Client.Commands
 
         public BaseCommand(IBookStoreContext context)
         {
-            Guard.WhenArgument(context, Err.Context).IsNull().Throw();
+            Guard.WhenArgument(context, ErrorMessage.Context).IsNull().Throw();
             this.context = context;
         }
 

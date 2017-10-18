@@ -7,12 +7,15 @@ namespace BookStore.Client.Commands
 {
     public class OfferDeleteCommand : BaseCommand, ICommand
     {
-        public OfferDeleteCommand(IBookStoreContext context) : base(context) { }
+        public OfferDeleteCommand(IBookStoreContext context) 
+            : base(context)
+        {
+        }
 
         //syntax offerdelete:id
         public override string Execute(IList<string> parameters)
         {
-            Guard.WhenArgument(parameters, Err.Params).IsNullOrEmpty().Throw();
+            Guard.WhenArgument(parameters, ErrorMessage.Params).IsNullOrEmpty().Throw();
 
             int.TryParse(parameters[0], out int id);
 
@@ -21,7 +24,7 @@ namespace BookStore.Client.Commands
             this.Context.Offers.Remove(offer);
             this.Context.SaveChanges();
 
-            return "offer deleted";
+            return "Offer successfully deleted";
         }
     }
 }

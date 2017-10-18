@@ -16,13 +16,13 @@ namespace BookStore.Client.Commands
         public override string Execute(IList<string> parameters)
         {
             Guard.WhenArgument(parameters,
-                "Invalid command parameters\n 1. Make sure you have selected a book title e.g.\n deletebook HumptyDumpty")
+                "Invalid command parameters\n 1. Make sure you have selected a book title e.g.\n deletebook:HumptyDumpty")
                 .IsNullOrEmpty().Throw();
 
             var bookTitle = parameters[0];
 
-            Book book = Context.Books.FirstOrDefault(b => b.Title == bookTitle);
-            //check for existence
+            var book = Context.Books.FirstOrDefault(b => b.Title == bookTitle);
+
             Context.Books.Remove(book);
             Context.SaveChanges();
 

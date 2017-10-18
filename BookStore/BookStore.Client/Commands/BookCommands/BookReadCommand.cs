@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 ﻿using BookStore.Data;
+=======
+﻿using BookStore.Client.Utils;
+using BookStore.Database;
+>>>>>>> 0ab72287fd08a4ba486fce56cc1225ea4f82b731
 using Bytes2you.Validation;
 using System;
 using System.Collections.Generic;
@@ -15,25 +20,19 @@ namespace BookStore.Client.Commands
 
         public override string Execute(IList<string> parameters)
         {
-            Guard.WhenArgument(parameters, "parameters").IsNullOrEmpty().Throw();
+            Guard.WhenArgument(parameters, ErrorMessage.Params).IsNullOrEmpty().Throw();
 
             var bookTitle = parameters[0];
 
             string result = string.Empty;
-            // See if there is better exception handling
-            try
-            {
-                var readBook = Context.Books.FirstOrDefault(t => t.Title == bookTitle);
-                result = "Book Title: " + readBook.Title + ", \n"
-                        + "Pages: "+ readBook.Pages + ", \n"
-                        + "Language: " + readBook.Language + ", \n"
-                        + "Genre: " + readBook.Genre + ", \n"
-                        + "Authors: " + string.Join(", ", readBook.Authors);
-            }
-            catch (Exception)
-            {
-                throw new ContextMarshalException();
-            }
+            
+            var readBook = Context.Books.FirstOrDefault(t => t.Title == bookTitle);
+            result = $"Title: {readBook.Title}, \n"
+                        + $"Pages: {readBook.Pages}, \n"
+                        + $"Language: {readBook.Language}, \n"
+                        + $"Genre: {readBook.Genre}, \n"
+                        + $"Authors: {string.Join(", ", readBook.Authors)}";
+           
             
             return result;
         }
