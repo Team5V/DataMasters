@@ -1,7 +1,5 @@
 ﻿using BookStore.Client.Utils;
 using BookStore.Data;
-using BookStore.Models;
-using Bytes2you.Validation;
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
 
@@ -14,7 +12,8 @@ namespace BookStore.Client.Commands
         {
         }
 
-        //offerupdate:id;prop;value
+        //offerupdate:1;price;30
+        //offerupdate:1;copies;40
         public override string Execute(IList<string> parameters)
         {
             parameters.ValidateParameters(3);

@@ -1,6 +1,5 @@
 ﻿using BookStore.Client.Utils;
 using BookStore.Data;
-using System;
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
 
@@ -12,11 +11,11 @@ namespace BookStore.Client.Commands
             : base(context)
         {
         }
-        //syntax offerread:id
+        //syntax offerread:1
         public override string Execute(IList<string> parameters)
         {
             parameters.ValidateParameters(1);
-            var result = $"No match found.";
+            var result = ErrorMessage.NoID;
             var offer = this.Context.Offers.Find(int.Parse(parameters[0]));
 
             if (offer != null)
@@ -24,7 +23,7 @@ namespace BookStore.Client.Commands
                 try
                 {
                     var title = offer.Book.Title;
-                    result = $"{title} price:{offer.Price} copies:{offer.Copies}";
+                    result = offer.Print(title);
                 }
                 catch (DbEntityValidationException ex)
                 {

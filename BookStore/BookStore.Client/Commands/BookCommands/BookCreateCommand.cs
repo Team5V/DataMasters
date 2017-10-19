@@ -17,18 +17,18 @@ namespace BookStore.Client.Commands
         {
         }
 
-        // bookcreate:title;bg;60;Aut,Author2,Author3;Comedy
+        // bookcreate:Nai-qkata;bg;60;Pesho;Comedy
         public override string Execute(IList<string> parameters)
         {
             parameters.ValidateParameters(5);
 
             var title = parameters[0].Trim();
-            var result = $"{title} already exist";
+            var result = ErrorMessage.Exist;
             if (Context.Books.FirstOrDefault(x => x.Title == title) == null)
             {
                 try
                 {
-                    var book = new Book { Title = parameters[0].Trim() };
+                    var book = new Book { Title = title };
                     book.Language = parameters[1];
                     book.Pages = int.Parse(parameters[2]);
                     var authorNames = parameters[3].Split(',');
@@ -41,7 +41,7 @@ namespace BookStore.Client.Commands
                 }
                 catch (DbEntityValidationException ex)
                 {
-                    result = "Invalid parameter:" + ex.EntityValidationErrors.First().Entry.Entity.ToString().Split('.').Last();
+                    result = "Entity framework X like u" + ex;
                 }
             }
 

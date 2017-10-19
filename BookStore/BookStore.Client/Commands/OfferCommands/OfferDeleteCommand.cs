@@ -12,11 +12,11 @@ namespace BookStore.Client.Commands
         {
         }
 
-        //syntax offerdelete:id
+        //syntax offerdelete:1
         public override string Execute(IList<string> parameters)
         {
             parameters.ValidateParameters(1);
-            var result = $"No match found.";
+            var result = ErrorMessage.NoID;
             var offer = this.Context.Offers.Find(int.Parse(parameters[0]));
 
             if (offer != null)

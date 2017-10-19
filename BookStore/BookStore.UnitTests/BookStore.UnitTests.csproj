@@ -71,6 +71,10 @@
   <ItemGroup>
     <Compile Include="Commands\CreateBookCommandTests\Constructor_Should.cs" />
     <Compile Include="Commands\CreateBookCommandTests\Execute_Should.cs" />
+    <Compile Include="Commands\OfferCommandsTests\Constructor_Should.cs" />
+    <Compile Include="Commands\OfferCommandsTests\OfferCreateCommandTests\Execute_Should.cs" />
+    <Compile Include="Commands\OfferCommandsTests\OfferDeleteCommandTests\Execute_Should.cs" />
+    <Compile Include="Commands\OfferCommandsTests\OfferReadCommandTests\Execute_Should.cs" />
     <Compile Include="Commands\UpdateBookCommandTests\Constructor_Should.cs" />
     <Compile Include="Core\Factories\BookStoreFactoryTests\CreateBook_Should.cs" />
     <Compile Include="Core\Factories\CommandFactoryTests\Constructor_Should.cs" />
@@ -101,6 +105,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Commands\BaseCommandTests\" />
+    <Folder Include="Commands\OfferCommandsTests\OfferUpdateCommandTests\" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

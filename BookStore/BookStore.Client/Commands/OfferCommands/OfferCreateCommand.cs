@@ -1,11 +1,8 @@
 ﻿using BookStore.Client.Utils;
 using BookStore.Data;
 using BookStore.Models;
-using Bytes2you.Validation;
-using System;
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
-using System.Linq;
 
 namespace BookStore.Client.Commands
 {
@@ -16,7 +13,7 @@ namespace BookStore.Client.Commands
         {
         }
 
-        //offercreate:bookId;price;copies
+        //offercreate:1;2;10
         public override string Execute(IList<string> parameters)
         {
             parameters.ValidateParameters(3);
@@ -25,7 +22,7 @@ namespace BookStore.Client.Commands
             var result = $"Book <{book.Title}> already has an offer.";
             if (book == null)
             {
-                result = $"No match found.";
+                result = ErrorMessage.NoID;
             }
             else if (book.BookOffer == null)
             {

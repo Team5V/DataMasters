@@ -3,6 +3,7 @@ using BookStore.Models;
 using Bytes2you.Validation;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 
 namespace BookStore.Client.Utils
@@ -20,18 +21,18 @@ namespace BookStore.Client.Utils
             }
         }
 
-        public static Book GetBook(this IBookStoreContext context, int id)
+        public static string Print(this Book book, string authorNames)
         {
-            var book = context.Books.Find(id);
-            Guard.WhenArgument(book, ErrorMessage.NoID).IsNull().Throw();
-            return book;
+            return $"Title: {book.Title}, \n"
+                        + $"Pages: {book.Pages}, \n"
+                        + $"Language: {book.Language}, \n"
+                        + $"Genre: {book.Genre}, \n"
+                        + $"Authors: {string.Join(", ", authorNames)}";
         }
 
-        public static Offer GetOffer(this IBookStoreContext context, int id)
+        public static string Print(this Offer offer, string title)
         {
-            var offer = context.Offers.Find(id);
-            Guard.WhenArgument(offer, ErrorMessage.NoID).IsNull().Throw();
-            return offer;
+            return $"{title} price:{offer.Price} copies:{offer.Copies}";
         }
 
         public static ICollection<Author> ResolveAuthors(this IBookStoreContext context, IList<string> fullNames)
