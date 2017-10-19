@@ -71,16 +71,15 @@
   <ItemGroup>
     <Compile Include="Commands\BookCommands\BookDeleteCommandTests\Constructor_Should.cs" />
     <Compile Include="Commands\BookCommands\BookDeleteCommandTests\Execute_Should.cs" />
-    <Compile Include="Commands\Constructor_Should.cs" />
+    <Compile Include="Commands\ReportGenerateTests\Constructor_Should.cs" />
     <Compile Include="Commands\BookCommands\CreateBookCommandTests\Constructor_Should.cs" />
     <Compile Include="Commands\BookCommands\CreateBookCommandTests\Execute_Should.cs" />
-    <Compile Include="Commands\Execute_Should.cs" />
+    <Compile Include="Commands\ReportGenerateTests\Execute_Should.cs" />
     <Compile Include="Commands\OfferCommandsTests\Constructor_Should.cs" />
     <Compile Include="Commands\OfferCommandsTests\OfferCreateCommandTests\Execute_Should.cs" />
     <Compile Include="Commands\OfferCommandsTests\OfferDeleteCommandTests\Execute_Should.cs" />
     <Compile Include="Commands\OfferCommandsTests\OfferReadCommandTests\Execute_Should.cs" />
     <Compile Include="Commands\BookCommands\UpdateBookCommandTests\Constructor_Should.cs" />
-    <Compile Include="Core\Factories\BookStoreFactoryTests\CreateBook_Should.cs" />
     <Compile Include="Core\Factories\CommandFactoryTests\Constructor_Should.cs" />
     <Compile Include="Core\Providers\CommandParserTests\Constructor_Should.cs" />
     <Compile Include="Core\Providers\CommandParserTests\ParseCommand_Should.cs" />

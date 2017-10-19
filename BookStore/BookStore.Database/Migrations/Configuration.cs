@@ -18,15 +18,18 @@ namespace BookStore.Data.Migrations
 
         protected override void Seed(BookStoreContext context)
         {
-            //this.AuthorSeed(context);
-            //context.SaveChanges();
+            this.BookSeed(context);
+            context.SaveChanges();
+
+            this.AuthorSeed(context);
+            context.SaveChanges();
         }
 
         private void BookSeed(BookStoreContext context)
         {
             if (!context.Books.Any())
             {
-                using (StreamReader reader = new StreamReader(@"..\..\..\BookStore.AppData\jsonbooks.json"))
+                using (StreamReader reader = new StreamReader(@"D:\TelerikAcademyAlpha\Team Projects\DataMaster\BookStore\BookStore.AppData\jsonbooks.json"))
                 {
                     string json = reader.ReadToEnd();
                     dynamic parsed = JObject.Parse(json);
@@ -38,7 +41,6 @@ namespace BookStore.Data.Migrations
                             {
                                 Book bookToAdd = new Book();
                                 bookToAdd.Title = book.Title;
-                                bookToAdd.Authors = new HashSet<Author>();
                                 bookToAdd.Language = book.Language;
                                 bookToAdd.Genre = book.Genre;
 
@@ -51,9 +53,9 @@ namespace BookStore.Data.Migrations
         }
         private void AuthorSeed(BookStoreContext context)
         {
-            if (context.Authors.Any())
+            if (!context.Authors.Any())
             {
-                using (StreamReader reader = new StreamReader(@"\..\..\..\BookStore.AppData\authors.json"))
+                using (StreamReader reader = new StreamReader(@"D:\TelerikAcademyAlpha\Team Projects\DataMaster\BookStore\BookStore.AppData\authors.json"))
                 {
                     string json = reader.ReadToEnd();
                     dynamic parsed = JObject.Parse(json);
@@ -64,8 +66,8 @@ namespace BookStore.Data.Migrations
                             foreach (var author in authors)
                             {
                                 Author authorToAdd = new Author();
-                                authorToAdd.FullName = author.Fullname;
-
+                                authorToAdd.FullName = author.FullName;
+                                authorToAdd.Books = new HashSet<Book>();
                                 foreach (string bookTitle in author.Books)
                                 {
                                     Book book = context.Books

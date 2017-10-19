@@ -19,6 +19,14 @@ namespace BookStore.UnitTests.Commands.ReportGenerateCommandTests
             Assert.ThrowsException<ArgumentNullException>(() => new ReportGenerateCommand(contextMock.Object,null));
         }
         [TestMethod]
+        public void ThrowException_WhenPdfExporterIsNull()
+        {
+            // Arrange 
+            var pdfExporterMock = new Mock<IPdfExporter>();
+            // Act & Assert
+            Assert.ThrowsException<ArgumentNullException>(() => new ReportGenerateCommand(null, pdfExporterMock.Object));
+        }
+        [TestMethod]
         public void ReturnSuccess_WhenParametersAreCorrect()
         {
             //Arrange
