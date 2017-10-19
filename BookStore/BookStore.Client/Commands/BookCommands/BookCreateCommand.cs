@@ -3,6 +3,8 @@ using BookStore.Data;
 using BookStore.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core;
+using System.Data.Entity.Validation;
 using System.Linq;
 
 namespace BookStore.Client.Commands
@@ -15,25 +17,34 @@ namespace BookStore.Client.Commands
         {
         }
 
-        // bookcreate:title;language;pages;Author1,Author2,Author3;GenreType
+        // bookcreate:title;bg;60;Aut,Author2,Author3;Comedy
         public override string Execute(IList<string> parameters)
         {
             parameters.ValidateParameters(5);
 
-            var book = new Book { Title = parameters[0].Trim() };
-            var result = $"{book.Title} already exist";
-            if (Context.Books.FirstOrDefault(x => x.Title == book.Title) == null)
+            var title = parameters[0].Trim();
+            var result = $"{title} already exist";
+            if (Context.Books.FirstOrDefault(x => x.Title == title) == null)
             {
-                book.Language = parameters[1];
-                book.Pages = int.Parse(parameters[2]);
-                var authorNames = parameters[3].Split(',');
-                var genre = (GenreType)Enum.Parse(typeof(GenreType), parameters[4]);
+                try
+                {
+                    var book = new Book { Title = parameters[0].Trim() };
+                    book.Language = parameters[1];
+                    book.Pages = int.Parse(parameters[2]);
+                    var authorNames = parameters[3].Split(',');
+                    var genre = (GenreType)Enum.Parse(typeof(GenreType), parameters[4]);
 
-                book.Authors = this.Context.ResolveAuthors(authorNames);
-                this.Context.Books.Add(book);
-                this.Context.SaveChanges();
-                result = $"Successfully added {book.Title}.";
+                    book.Authors = this.Context.ResolveAuthors(authorNames);
+                    this.Context.Books.Add(book);
+                    this.Context.SaveChanges();
+                    result = $"Successfully added {book.Title}.";
+                }
+                catch (DbEntityValidationException ex)
+                {
+                    result = "Invalid parameter:" + ex.EntityValidationErrors.First().Entry.Entity.ToString().Split('.').Last();
+                }
             }
+
             return result;
         }
     }

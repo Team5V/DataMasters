@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BookStore.Models
 {
@@ -8,7 +7,7 @@ namespace BookStore.Models
     {
         public Book()
         {
-            this.Authors = new SortedSet<Author>();
+            this.Authors = new HashSet<Author>();
         }
 
         [Key]
@@ -25,7 +24,6 @@ namespace BookStore.Models
         [Required, Range(minimum: 1, maximum: 2000)]
         public int Pages { get; set; }
 
-        [Required, MinLength(1)]
         public virtual ICollection<Author> Authors { get; set; }
 
         [Required, EnumDataType(typeof(GenreType))]

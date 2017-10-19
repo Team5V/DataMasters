@@ -4,12 +4,14 @@ using BookStore.Models;
 using Bytes2you.Validation;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
+using System.Linq;
 
 namespace BookStore.Client.Commands
 {
     public class OfferCreateCommand : BaseCommand, ICommand
     {
-        public OfferCreateCommand(IBookStoreContext context) 
+        public OfferCreateCommand(IBookStoreContext context)
             : base(context)
         {
         }
@@ -17,32 +19,33 @@ namespace BookStore.Client.Commands
         //offercreate:bookId;price;copies
         public override string Execute(IList<string> parameters)
         {
-            Guard.WhenArgument(parameters, ErrorMessage.Params).IsNullOrEmpty().Throw();
-            Guard.WhenArgument(parameters.Count, ErrorMessage.Less).IsLessThan(3).Throw();
+            parameters.ValidateParameters(3);
 
-            int.TryParse(parameters[0], out int bookId);
-
-            var book = Context.GetBook(bookId);
-            try
+            var book = Context.Books.Find(int.Parse(parameters[0]));
+            var result = $"Book {book.Title} already has an offer.";
+            if (book == null)
             {
-                if (Context.GetOffer(bookId) != null)
+                result = $"No match for that Id.";
+            }
+            else if (book.BookOffer == null)
+            {
+                try
                 {
-                    return ErrorMessage.Exist;
+                    var offer = book.BookOffer = new Offer();
+                    offer.Price = decimal.Parse(parameters[1]);
+                    offer.Copies = int.Parse(parameters[2]);
+
+                    this.Context.Offers.Add(offer);
+                    this.Context.SaveChanges();
+                    result = $"Successfully added offer on {book.Title}.";
+                }
+                catch (DbEntityValidationException ex)
+                {
+                    result = "Entity framework X like u" + ex;
                 }
             }
-            //we want to be null that proves nonExistence
-            catch (ArgumentNullException)
-            {
-            }
 
-            decimal.TryParse(parameters[1], out decimal price);
-            int.TryParse(parameters[0], out int copies);
-            var offer = new Offer();
-
-            this.Context.Offers.Add(offer);
-            this.Context.SaveChanges();
-
-            return "Created offer";
+            return result;
         }
     }
 }

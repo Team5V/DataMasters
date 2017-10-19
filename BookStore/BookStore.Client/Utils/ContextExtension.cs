@@ -9,11 +9,6 @@ namespace BookStore.Client.Utils
 {
     public static class ContextExtension
     {
-
-        //ako e prazna => add
-        //ako nqma stoinost =>add
-        //ako ima stoinost = prekrati
-
         public static void ValidateParameters(this ICollection<string> collection, int paramsCount = 0)
         {
             Guard.WhenArgument(collection, ErrorMessage.Params).IsNullOrEmpty().Throw();
@@ -43,13 +38,13 @@ namespace BookStore.Client.Utils
         {
             fullNames.ValidateParameters(1);
 
-            var result = new SortedSet<Author>();
+            var result = new HashSet<Author>();
             foreach (var fullName in fullNames)
             {
                 var holder = context.Authors.FirstOrDefault(x => x.FullName == fullName);
                 if (holder == null)
                 {
-                    result.Add(new Author { FullName = fullName.Trim() });
+                    result.Add(new Author { FullName = fullName });
                 }
                 else
                 {

@@ -18,8 +18,8 @@ namespace BookStore.Data.Migrations
 
         protected override void Seed(BookStoreContext context)
         {
-            this.AuthorSeed(context);
-            context.SaveChanges();
+            //this.AuthorSeed(context);
+            //context.SaveChanges();
         }
 
         private void BookSeed(BookStoreContext context)

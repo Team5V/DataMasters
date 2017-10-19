@@ -4,16 +4,16 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BookStore.Models
 {
-    public class Author : IEquatable<Author>
+    public class Author
     {
         public Author()
         {
-            this.Books = new SortedSet<Book>();
+            this.Books = new HashSet<Book>();
         }
 
         [Key]
         public int Id { get; set; }
-        
+
         [Required, StringLength(20, MinimumLength = 5,
             ErrorMessage = "Author.FullName's length cannot be less than 5 or more than 20 symbols long.")]
         public string FullName { get; set; }
@@ -25,9 +25,6 @@ namespace BookStore.Models
         public virtual ICollection<Book> Books { get; set; }
 
 
-        public bool Equals(Author other)
-        {
-            return this.FullName == other.FullName;
-        }
+
     }
 }
