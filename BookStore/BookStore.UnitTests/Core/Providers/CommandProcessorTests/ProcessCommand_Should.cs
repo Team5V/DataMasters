@@ -21,7 +21,7 @@ namespace BookStore.UnitTests.Core.Providers.CommandProcessorTests
                 "Nai-qkata Kniga",
                 "BG",
                 "80",
-                "Author1,Author2,Author3", // TODO: Fix - This should be a List(ICollection)
+                "Author1,Author2,Author3", 
                 "Comedy"
             };
 
