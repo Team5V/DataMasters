@@ -69,6 +69,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\BookCommands\BookDeleteCommandTests\Constructor_Should.cs" />
     <Compile Include="Commands\CreateBookCommandTests\Constructor_Should.cs" />
     <Compile Include="Commands\CreateBookCommandTests\Execute_Should.cs" />
     <Compile Include="Commands\OfferCommandsTests\Constructor_Should.cs" />
