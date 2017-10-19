@@ -1,13 +1,13 @@
 ﻿using BookStore.Client.Utils;
 using BookStore.Data;
-using Bytes2you.Validation;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 
 namespace BookStore.Client.Commands
 {
     public class OfferDeleteCommand : BaseCommand, ICommand
     {
-        public OfferDeleteCommand(IBookStoreContext context) 
+        public OfferDeleteCommand(IBookStoreContext context)
             : base(context)
         {
         }
@@ -15,16 +15,25 @@ namespace BookStore.Client.Commands
         //syntax offerdelete:id
         public override string Execute(IList<string> parameters)
         {
-            Guard.WhenArgument(parameters, ErrorMessage.Params).IsNullOrEmpty().Throw();
+            parameters.ValidateParameters(1);
+            var result = $"No match found.";
+            var offer = this.Context.Offers.Find(int.Parse(parameters[0]));
 
-            int.TryParse(parameters[0], out int id);
-
-            var offer = Context.GetOffer(id);
-
-            this.Context.Offers.Remove(offer);
-            this.Context.SaveChanges();
-
-            return "Offer successfully deleted";
+            if (offer != null)
+            {
+                try
+                {
+                    this.Context.Offers.Remove(offer);
+                    var title = offer.Book.Title;
+                    this.Context.SaveChanges();
+                    result = $"Successfully removed offer on <{title}>.";
+                }
+                catch (DbEntityValidationException ex)
+                {
+                    result = "Entity framework X like u" + ex;
+                }
+            }
+            return result;
         }
     }
 }

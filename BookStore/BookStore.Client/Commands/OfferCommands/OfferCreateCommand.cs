@@ -22,10 +22,10 @@ namespace BookStore.Client.Commands
             parameters.ValidateParameters(3);
 
             var book = Context.Books.Find(int.Parse(parameters[0]));
-            var result = $"Book {book.Title} already has an offer.";
+            var result = $"Book <{book.Title}> already has an offer.";
             if (book == null)
             {
-                result = $"No match for that Id.";
+                result = $"No match found.";
             }
             else if (book.BookOffer == null)
             {
@@ -37,7 +37,7 @@ namespace BookStore.Client.Commands
 
                     this.Context.Offers.Add(offer);
                     this.Context.SaveChanges();
-                    result = $"Successfully added offer on {book.Title}.";
+                    result = $"Successfully added offer on <{book.Title}>.";
                 }
                 catch (DbEntityValidationException ex)
                 {

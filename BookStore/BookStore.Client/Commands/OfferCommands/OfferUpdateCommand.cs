@@ -3,12 +3,13 @@ using BookStore.Data;
 using BookStore.Models;
 using Bytes2you.Validation;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 
 namespace BookStore.Client.Commands
 {
     public class OfferUpdateCommand : BaseCommand, ICommand
     {
-        public OfferUpdateCommand(IBookStoreContext context) 
+        public OfferUpdateCommand(IBookStoreContext context)
             : base(context)
         {
         }
@@ -16,32 +17,35 @@ namespace BookStore.Client.Commands
         //offerupdate:id;prop;value
         public override string Execute(IList<string> parameters)
         {
-            Guard.WhenArgument(parameters, ErrorMessage.Params).IsNullOrEmpty().Throw();
-            Guard.WhenArgument(parameters.Count, "Parameters need to be at least three").IsLessThan(3).Throw();
+            parameters.ValidateParameters(3);
 
-            int.TryParse(parameters[0], out int id);
-            var offer = new Offer();//this.GetOffer(id);
-            if (offer == null)
+            var offer = this.Context.Offers.Find(parameters[0]);
+            var result = ErrorMessage.NoID;
+            if (offer != null)
             {
-                return ErrorMessage.NoID;
+                try
+                {
+                    var prop = parameters[1].ToLower();
+                    switch (prop)
+                    {
+                        case "price":
+                            offer.Price = decimal.Parse(parameters[2]);
+                            break;
+                        case "copies":
+                            offer.Copies = int.Parse(parameters[2]);
+                            break;
+                        default:
+                            return ErrorMessage.Prop;
+                    }
+                    this.Context.SaveChanges();
+                    result = $"Offer`s {prop} was updated to {parameters[2]}";
+                }
+                catch (DbEntityValidationException ex)
+                {
+                    result = "Entity framework X like u" + ex;
+                }
             }
-
-            var prop = parameters[1].ToLower();
-            switch (prop)
-            {
-                case "price":
-                    offer.Price = decimal.Parse(parameters[1]);
-                    break;
-                case "copies":
-                    offer.Copies = int.Parse(parameters[1]);
-                    break;
-                default:
-                    return ErrorMessage.Prop;
-            }
-
-            this.Context.SaveChanges();
-
-            return "Offer updated";
+            return result;
         }
     }
 }
