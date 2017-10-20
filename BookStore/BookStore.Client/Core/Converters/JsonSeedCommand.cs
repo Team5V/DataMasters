@@ -32,6 +32,7 @@ namespace BookStore.Client.Core.Converters
                                 Book bookToAdd = new Book();
                                 bookToAdd.Title = book.Title;
                                 bookToAdd.Language = book.Language;
+                                bookToAdd.Pages = book.Pages;
                                 bookToAdd.Genre = book.Genre;
 
                                 context.Books.AddOrUpdate(bookToAdd);
