@@ -1,5 +1,6 @@
 ﻿using BookStore.Client.Commands;
 using BookStore.Client.Core;
+using BookStore.Client.Core.Converters;
 using BookStore.Core;
 using BookStore.Data;
 using Ninject.Modules;
@@ -34,6 +35,7 @@ namespace BookStore.DependencyInjection
             this.Bind<ICommand>().To<ReportGenerateCommand>().Named("reportgenerate");
             //sale commands
             this.Bind<ICommand>().To<SaleCreateCommand>().Named("saleconduct");
+            this.Bind<ICommand>().To<JsonSeedCommand>().Named("seedjson");
             this.Bind<IPdfExporter>().To<PdfExporter>();
 
            
