@@ -12,7 +12,7 @@ namespace BookStore.Client.Utils
     {
         public static void ValidateParameters(this ICollection<string> collection, int paramsCount = 0)
         {
-            Guard.WhenArgument(collection, ErrorMessage.Params).IsNullOrEmpty().Throw();
+            Guard.WhenArgument(collection.Count, "Empty collection").IsEqual(0).Throw();
             Guard.WhenArgument(collection.Count, "Argument count.").IsLessThan(paramsCount).Throw();
 
             if (collection.Any(string.IsNullOrWhiteSpace))

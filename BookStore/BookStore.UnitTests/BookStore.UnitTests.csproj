@@ -86,6 +86,7 @@
     <Compile Include="Core\Providers\CommandParserTests\ParseParameters_Should.cs" />
     <Compile Include="Core\Providers\CommandProcessorTests\Constructor_Should.cs" />
     <Compile Include="Core\Providers\CommandProcessorTests\ProcessCommand_Should.cs" />
+    <Compile Include="Core\Utils\ValidateParameters_Should.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
