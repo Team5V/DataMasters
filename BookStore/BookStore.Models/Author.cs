@@ -18,7 +18,7 @@ namespace BookStore.Models
             ErrorMessage = "Author.FullName's length cannot be less than 5 or more than 20 symbols long.")]
         public string FullName { get; set; }
 
-        [StringLength(200,
+        [StringLength(2000,
             ErrorMessage = "Author.Bio's length cannot be more than 200 symbols long.")]
         public string Bio { get; set; }
 
